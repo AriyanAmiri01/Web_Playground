@@ -1,0 +1,956 @@
+
+/*********************************************************
+*   HERO SECTION
+*********************************************************/
+.hero-section {
+    /* Responsiveness */
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    /* Animations */
+}
+.hero-section::before {
+    /* The line before .hero Section */
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    animation: slideRight 8s ease-in-out infinite;
+}
+.hero-section::after {
+    /* The line before .hero Section */
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 150px;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+    /* Texts */
+    animation: slideLeft 8s ease-in-out infinite;
+}
+.hero-section .floating-objects {
+    /* Responsiveness */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.hero-section .floating-circle {
+    /* Responsiveness */
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+    /* Visual Effects */
+    border: 1px solid #000;
+    border-radius: 50%;
+    opacity: 0.8;
+    /* Animations */
+    animation: floatUp 18s ease-in-out infinite;
+}
+.hero-section .floating-circle:nth-child(1) {
+    /* Responsiveness */
+    left: 10%;
+    bottom: 10%;
+}
+.hero-section .floating-circle:nth-child(2) {
+    /* Responsiveness */
+    right: 15%;
+    bottom: 20%;
+}
+.hero-section .floating-square {
+    /* Responsiveness */
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 40%;
+    left: -50px;
+    /* Visual Effects */
+    background: #000;
+    opacity: 0.08;
+    /* Animations */
+    animation: floatDiagonal 25s linear infinite;
+}
+.hero-section .hero-decoration {
+    /* Responsiveness */
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    /* Animations */
+    transform: rotate(45deg);
+    animation: rotateSquare 10s linear infinite;
+}
+.hero-section .hero-content {
+    /* Responsiveness */
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    /* Texts */
+    text-align: center;
+    /* Animations */
+    animation: fadeInUp 1s ease;
+}
+.hero-section h1 {
+    /* Responsiveness */
+    margin-bottom: 30px;
+    line-height: 0.9;
+    position: relative;
+    /* Texts */
+    font-size: clamp(48px, 8vw, 88px);
+    font-weight: 100;
+    letter-spacing: -3px;
+}
+.hero-section h1::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transform: translateX(-50%);
+}
+.hero-section .subtitle {
+    /* Responsiveness */
+    margin-bottom: 50px;
+    /* Texts */
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+
+/*********************************************************
+*   ABOUT SECTION
+*********************************************************/
+.about-section {
+    /* Responsiveness */
+    padding: 120px 20px;
+    position: relative;
+    /* Visual Effects */
+    background: #fff;
+}
+.about-section::before {
+    /* The Line separating two sections */
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+}
+
+
+
+/*********************************************************
+*   ABOUT SECTION
+*********************************************************/
+.quote-section {
+    /* Responsiveness */
+    margin-bottom: 80px;
+}
+.quote-section .quote-block {
+    /* Responsiveness */
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    /* Texts */
+    text-align: center;
+}
+.quote-section .quote-mark {
+    /* Responsiveness */
+    position: absolute;
+    top: -40px;
+    left: -60px;
+    /* Visual Effects */
+    opacity: 0.1;
+    /* Texts */
+    font-size: 120px;
+    line-height: 1;
+    font-weight: 100;
+}
+.quote-section .quote-block h3 {
+    /* Responsiveness */
+    margin-bottom: 30px;
+    /* Texts */
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -1px;
+}
+.quote-section .quote-author {
+    /* Responsiveness */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.quote-section .author-line {
+    /* Responsiveness */
+    width: 50px;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+}
+.quote-section .quote-author p {
+    /* Texts */
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+
+/*********************************************************
+*   STATE SECTION
+*********************************************************/
+.stats-grid-section {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 2px;
+    margin-bottom: 100px;
+    gap: 2px;
+    /* Visual Effects */
+    background: #000;
+}
+.stats-grid-section .stat-item {
+    /* Responsiveness */
+    padding: 60px 20px;
+    position: relative;
+    /* Visual Effects */
+    background: #fff;
+    /* Texts */
+    text-align: center;
+}
+.stats-grid-section .stat-number {
+    /* Responsiveness */
+    margin-bottom: 10px;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: -2px;
+}
+.stats-grid-section .stat-label {
+    /* Texts */
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.stats-grid-section .stat-decoration {
+    /* Responsiveness */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    /* Visual Effects */
+    border: 1px solid #000;
+    /* Animations */
+    transform: rotate(45deg);
+}
+
+
+
+/*********************************************************
+*   PHILOSOPHY SECTION
+*********************************************************/
+.philosophy-section {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: start;
+}
+.philosophy-section .philosophy-header {
+    /* Responsiveness */
+    position: relative;
+}
+.philosophy-section .philosophy-header h2 {
+    /* Texts */
+    font-size: 64px;
+    font-weight: 100;
+    letter-spacing: -2px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+.philosophy-section .header-decoration {
+    /* Responsiveness */
+    position: absolute;
+    bottom: 0;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    /* Animations */
+    background: #000;
+}
+.philosophy-section .philosophy-content {
+    /* Responsiveness */
+    padding-top: 40px;
+}
+.philosophy-section .lead-text {
+    /* Texts */
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    font-weight: 300;
+}
+.philosophy-section .philosophy-points {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+.philosophy-section .point-item {
+    /* Responsiveness */
+    position: relative;
+    padding-left: 20px;
+}
+.philosophy-section .point-number {
+    /* Responsiveness */
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* Texts */
+    font-size: 10px;
+    font-weight: 700;
+}
+.philosophy-section .point-item h4 {
+    /* Responsiveness */
+    margin-bottom: 8px;
+    /* Texts */
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.philosophy-section .point-item p {
+    /* Texts */
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+
+/*********************************************************
+*   PROCESS TIMELINE SECTION
+*********************************************************/
+.process-timeline-section {
+    /* Responsiveness */
+    margin-bottom: 100px;
+}
+.process-timeline-section .section-subtitle {
+    /* Responsiveness */
+    margin-bottom: 60px;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.process-timeline-section .timeline-container {
+    /* Responsiveness */
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.process-timeline-section .timeline-line {
+    /* Responsiveness */
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 0;
+    /* Visual Effects */
+    background: #000;
+}
+.process-timeline-section .timeline-item {
+    /* Responsiveness */
+    position: relative;
+    text-align: center;
+    flex: 1;
+}
+.process-timeline-section .timeline-dot {
+    /* Responsiveness */
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 30px;
+    z-index: 1;
+    position: relative;
+    /* Visual Effects */
+    background: #fff;
+    border: 2px solid #000;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.process-timeline-section .timeline-item:hover .timeline-dot {
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transform: rotate(45deg);
+}
+.process-timeline-section .timeline-content h4 {
+    /* Responsiveness */
+    margin-bottom: 8px;
+    /* Texts */
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.process-timeline-section .timeline-content p {
+    /* Texts */
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+/*********************************************************
+*   VALUES GRID SECTION
+*********************************************************/
+.values-grid-section {
+    /* Texts */
+    text-align: center;
+}
+.values-grid-section .values-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+.values-grid-section .black-square {
+    /* Responsiveness */
+    width: 15px;
+    height: 15px;
+    /* Visual Effects */
+    background: #000;
+}
+.values-grid-section .values-header h2 {
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: -1px;
+}
+.values-grid-section .values-grid {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+.values-grid-section .value-card {
+    /* Responsiveness */
+    padding: 60px 20px;
+    /* Visual Effects */
+    border: 1px solid #000;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.values-grid-section .value-card:hover {
+    /* Animations */
+    transform: translateY(-10px);
+}
+.values-grid-section .value-icon {
+    /* Responsiveness */
+    margin-bottom: 20px;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+}
+.values-grid-section .value-card h4 {
+    /* Texts */
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.value-card.black {
+    /* Visual Effects */
+    background: #000;
+    /* Texts */
+    color: #fff;
+}
+
+
+
+/*********************************************************
+*   SERVICE SECTION
+*********************************************************/
+.services-section {
+    /* Responsiveness */
+    padding: 120px 20px;
+    position: relative;
+    /* Visual Effects */
+    background: #fafafa;
+}
+.services-section .services::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+    /* Visual Effects */
+    border: 2px solid #000;
+    /* Animations */
+    animation: rotateSlowly 20s linear infinite;
+}
+.services-section .services::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    right: 5%;
+    bottom: 80px;
+    width: 50px;
+    height: 50px;
+    /* Visual Effects */
+    border: 2px solid #000;
+    /* Animations */
+    transform: rotate(45deg);
+    animation: rotateSlowly 20s linear infinite reverse;
+}
+.services-section .services-header {
+    /* Responsiveness */
+    position: relative;
+    margin-bottom: 80px;
+    /* Texts */
+    text-align: center;
+}
+.services-section .services-header::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    width: 200px;
+    height: 1px;
+    /* Visual Effects */
+    background: linear-gradient(to right, transparent, #000 20%, #000 80%, transparent);
+    /* Animations */
+    transform: translateX(-50%);
+}
+.services-section .services-header h2 {
+    /* Responsiveness */
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    /* Texts */
+    font-size: 56px;
+    font-weight: 100;
+    letter-spacing: -1px;
+}
+.services-section .services-header h2::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 1px;
+    top: 50%;
+    left: -50px;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transform: translateY(-50%);
+}
+.services-section .services-header h2::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 1px;
+    top: 50%;
+    right: -50px;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transform: translateY(-50%);
+}
+.services-section .asymmetric-grid {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    position: relative;
+}
+.services-section .asymmetric-grid.reverse {
+    /* Responsiveness */
+    grid-template-columns: 1fr 2fr;
+}
+.services-section .service-large * {
+    /* Responsiveness */
+    position: relative;
+    z-index: 1;
+}
+.services-section .service-large {
+    /* Responsiveness */
+    position: relative;
+    padding: 60px;
+    overflow: hidden;
+    /* Visual Effects */
+    background: #fff;
+    border-left: 4px solid #000;
+    /* Animations */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.service-large::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Visual Effects */
+    background: rgba(0, 0, 0, 0.02);
+    /* Animations */
+    transition: left 0.6s ease;
+}
+.services-section .service-large:hover::before {
+    /* Responsiveness */
+    left: 0;
+}
+.services-section .service-large::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 15px;
+    height: 15px;
+    z-index: 0;
+    pointer-events: none;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.services-section .service-large:hover::after {
+    /* Animations */
+    transform: scale(1.5) rotate(45deg);
+}
+.services-section .service-large:hover {
+    /* Visual Effects */
+    border-left-width: 8px;
+    /* Animations */
+    transform: translateX(10px);
+}
+.services-section .asymmetric-grid.reverse .service-large {
+    /* Visual Effects */
+    border-left: none;
+    border-right: 4px solid #000;
+}
+.services-section .asymmetric-grid.reverse .service-large::after {
+    /* Responsiveness */
+    right: auto;
+    left: 40px;
+}
+.services-section .asymmetric-grid.reverse .service-large:hover {
+    /* Visual Effects */
+    border-right-width: 8px;
+    /* Animations */
+    transform: translateX(-10px);
+}
+.services-section .service-small {
+    /* Responsiveness */
+    padding: 40px;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    /* Visual Effects */
+    background: #000;
+    /* Texts */
+    color: #fff;
+    /* Animations */
+    transition: all 0.4s ease;
+}
+.services-section .service-small::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    /* Visual Effects */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    /* Animations */
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+}
+.services-section .service-small:hover::before {
+    /* Responsiveness */
+    width: 200px;
+    height: 200px;
+}
+.services-section .service-number {
+    /* Responsiveness */
+    margin-bottom: 20px;
+    position: relative;
+    /* Texts */
+    font-size: 88px;
+    font-weight: 100;
+    line-height: 1;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.services-section .service-small:hover .service-number {
+    /* Animations */
+    transform: scale(1.1);
+}
+.services-section .service-large h3 {
+    /* Responsiveness */
+    display: inline-block;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    /* Texts */
+    user-select: text;
+    /* Texts */
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+.services-section .service-large h3::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+    /* Animations */
+    transition: width 0.3s ease;
+}
+.services-section .service-large:hover h3::after {
+    /* Responsiveness */
+    width: 100%;
+}
+.services-section .service-large p {
+    /* Responsiveness */
+    margin-bottom: 30px;
+    user-select: text;
+    position: relative;
+    z-index: 1;
+    /* Texts */
+    user-select: text;
+    /* Texts */
+    color: #666;
+    line-height: 1.8;
+    font-size: 16px;
+}
+.services-section .service-tag {
+    /* Responsiveness */
+    display: inline-block;
+    padding: 8px 16px;
+    position: relative;
+    margin-top: 20px;
+    z-index: 1;
+    /* Visual Effects */
+    border: 1px solid #000;
+    /* Texts */
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.services-section .service-tag:hover {
+    /* Visual Effects */
+    background: #000;
+    color: #fff;
+    /* Animations */
+    transform: translateY(-2px);
+}
+.services-section .service-small h4 {
+    /* Texts */
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.9;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.services-section .service-small:hover h4 {
+    /* Texts */
+    opacity: 1;
+    letter-spacing: 3px;
+}
+
+
+
+/*********************************************************
+*   RESPONSIVE STUFFS
+*********************************************************/
+@media (max-width: 768px) {
+    .hero-section .hero-decoration {
+        display: none;
+    }
+    .hero-section::before{
+        width: 50px;
+    }
+    .hero-section::after {
+        width: 50px;
+    }
+    .hero-section .floating-objects {
+        opacity: 0.5;
+    }
+    .hero-section .floating-circle:nth-child(2) {
+        display: none;
+    }
+    .hero-section h1 {
+        font-size: 48px;
+    }
+    .quote-section .quote-mark {
+        font-size: 80px;
+        left: -30px;
+        top: -20px;
+    }
+    .quote-section .quote-block h3 {
+        font-size: 24px;
+    }
+    .stats-grid-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .philosophy-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .philosophy-section .philosophy-header h2 {
+        writing-mode: horizontal-tb;
+        font-size: 48px;
+    }
+    .philosophy-section .header-decoration {
+        position: static;
+        width: 60px;
+        height: 2px;
+        margin-top: 20px;
+    }
+    .philosophy-section .philosophy-points {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .process-timeline-section .timeline-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .process-timeline-section .timeline-line {
+        width: 2px;
+        height: 100%;
+        top: 0;
+        left: 20px;
+        right: auto;
+    }
+    .process-timeline-section .timeline-item {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        text-align: left;
+    }
+    .process-timeline-section .timeline-dot {
+        margin: 0;
+        flex-shrink: 0;
+    }
+    .values-grid-section .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .values-grid-section .values-header h2 {
+        font-size: 36px;
+    }
+    .values-grid-section .asymmetric-grid{
+        grid-template-columns: 1fr;
+    }
+    .values-grid-section .asymmetric-grid.reverse {
+        grid-template-columns: 1fr;
+    }
+    .values-grid-section .asymmetric-grid.reverse .service-large {
+        border-right: none;
+        border-left: 4px solid #000;
+    }
+    .values-grid-section .asymmetric-grid.reverse .service-large::after {
+        left: auto;
+        right: 20px;
+    }
+    .values-grid-section .asymmetric-grid.reverse .service-large:hover {
+        transform: translateX(10px);
+        border-left-width: 8px;
+        border-right-width: 4px;
+    }
+    .services-section .services-header h2{
+         display: none;
+    }
+    .services-section .services-header h2::before{
+         display: none;
+    }
+    .services-section .services-header h2::after {
+        display: none;
+    }
+    .services-section .service-large {
+        padding: 40px;
+    }
+    .services-section .service-large::after {
+        top: 20px;
+        right: 20px;
+    }
+    .services-section .service-tag {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+    .services-section .service-number {
+        font-size: 60px;
+    }
+    .services-section .services::before{
+         width: 30px;
+        height: 30px;
+    }
+    .services-section .services::after {
+        width: 30px;
+        height: 30px;
+    }
+}

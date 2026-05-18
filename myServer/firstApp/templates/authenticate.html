@@ -1,0 +1,65 @@
+{%extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Authentication
+{% endblock %}
+
+{% block customStyles %}
+  <link href="{% static 'css/style-authenticate.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block customScript %}
+{% endblock %}
+
+{% block mainContent %}
+    <!-- Section 4: Login -->
+    <section id="contact" class="login-section">
+        <div class="floating-objects">
+            <div class="floating-circle"></div>
+            <div class="floating-circle"></div>
+            <div class="floating-square"></div>
+        </div>
+        <div class="decoration"></div>
+        <div class="login-form">
+            <form>
+                <h2>Login</h2>
+                <div class="form-group">
+                    <input type="text" placeholder=" " required>
+                    <label>Username</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submit-btn">Send</button>
+            </form>
+        </div>
+                <div class="login-form">
+            <form>
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <input type="text" placeholder=" " required>
+                    <label>FirstName</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder=" " required>
+                    <label>LastName</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder=" " required>
+                    <label>Username</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder=" " required>
+                    <label>Confirm Password</label>
+                </div>
+                <button type="submit" class="submit-btn">Send</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default Page Title{% endblock %}</title>
+    <meta name="description" content="Index Page">
+    <meta name="author" content="Ariyan Amiri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% block customStyles %}{% endblock %}
+    <script src="{% static 'js/script.js' %}" defer></script>
+    {% block customScript %}{% endblock %}
+</head>
+
+<body>
+    <!-- Section 1: Navigation Bar -->
+    <nav id="navbar" class="nav-bar">
+        <div class="nav-container">
+            <a href="{% url 'index' %}" class="logo">ARIYAN AMIRI</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{% url 'index' %}" class="nav-link">HOME</a></li>
+                <li><a href="{% url 'projects' %}" class="nav-link">PROJECTS</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link">ABOUT</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">CONTACT</a></li>
+                {% block authenticateBlock %}
+                <li>
+                    <a href="{% url 'authenticate' %}" class="nav-icon">
+                        <img src="{% static 'assets/icon.svg' %}" alt="Login">
+                    </a>
+                </li>
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+    {% block mainContent %}
+    {% endblock %}
+    </main>
+
+    <footer class="footer-section">
+        <p>© 2026 Ariyan Amiri. All rights reserved</p>
+    </footer>
+</body>
+
+</html>

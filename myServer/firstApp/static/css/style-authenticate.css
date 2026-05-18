@@ -1,0 +1,203 @@
+
+
+.login-section {
+    /* Responsiveness */
+    display: flex;
+    margin-top: 100px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    /* Visual Effects */
+}
+.login-section::before {
+    /* The line before .hero Section */
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 1px;
+    /* Visual Effects */
+    background: #000;
+        z-index: -5;
+    /* Animations */
+    animation: slideRight 8s ease-in-out infinite;
+}
+.login-section::after {
+    /* The line before .hero Section */
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 150px;
+    height: 1px;
+        z-index: -5;
+    /* Visual Effects */
+    background: #000;
+    /* Texts */
+    animation: slideLeft 8s ease-in-out infinite;
+}
+
+.login-section h2{
+        /* Responsiveness */
+    margin-bottom: 40px;
+    position: relative;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+}
+.login-section .login-form {
+    /* Responsiveness */
+    background-color: rgb(255, 255, 255);
+    margin-top: 80px;
+    padding: 80px;
+    width:fit-content;
+    height: fit-content;
+    border:1px black solid;
+}
+.login-section .form-group {
+    /* Responsiveness */
+    margin-bottom: 20px;
+    position: relative;
+}
+.login-section input{
+    /* Responsiveness */
+    width: 100%;
+    padding: 15px 0;
+    /* Visual Effects */
+    border: none;
+    border-bottom: 2px solid #000;
+    background: transparent;
+    /* Texts */
+    font-size: 16px;
+    font-family: inherit;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.login-section input:focus{
+    /* Responsiveness */
+    outline: none;
+}
+.login-section label {
+    /* Responsiveness */
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    /* Texts */
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.login-section input:focus+label{
+    /* Responsiveness */
+    top: 0px;
+    /* Texts */
+    font-size: 11px;
+    font-weight: 500;
+}
+.login-section .submit-btn {
+    /* Responsiveness */
+    margin-top: 30px;
+    padding: 18px 60px;
+    position: relative;
+    /* Visual Effects */
+    background: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+    /* Texts */
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.login-section .submit-btn::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    /* Visual Effects */
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+}
+.login-section .submit-btn:hover {
+    /* Visual Effects */
+    background: transparent;
+    /* Texts */
+    color: #000;
+    /* Animations */
+    transform: translate(3px, 3px);
+}
+
+.login-section .floating-objects {
+    /* Responsiveness */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+.login-section .floating-circle {
+    /* Responsiveness */
+    position: absolute;
+    width: 80px;
+    height: 80px;
+     z-index: -1;
+    /* Visual Effects */
+    border: 1px solid #000;
+    border-radius: 50%;
+    opacity: 0.8;
+    /* Animations */
+    animation: floatUp 18s ease-in-out infinite;
+}
+.login-section .floating-circle:nth-child(1) {
+    /* Responsiveness */
+    left: 10%;
+    bottom: 10%;
+}
+.login-section .floating-circle:nth-child(2) {
+    /* Responsiveness */
+    right: 15%;
+    bottom: 20%;
+}
+.login-section .floating-square {
+    /* Responsiveness */
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 40%;
+    left: -50px;
+    /* Visual Effects */
+    background: #000;
+     z-index: -1;
+    opacity: 0.08;
+    /* Animations */
+    animation: floatDiagonal 25s linear infinite;
+}
+
+
+.login-section .decoration {
+    /* Responsiveness */
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    /* Animations */
+        z-index: -1;
+    transform: rotate(45deg);
+    animation: rotateSquare 10s linear infinite;
+}

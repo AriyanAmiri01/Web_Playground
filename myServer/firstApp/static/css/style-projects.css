@@ -1,0 +1,339 @@
+/*********************************************************
+*   CATALOG SECTION
+*********************************************************/
+.catalog-section {
+    /* Responsiveness */
+    padding: 120px 20px;
+    position: relative;
+    /* Visual Effects */
+    background: #fff;
+}
+.catalog-section .left-panel{
+    padding: 40px;
+}
+
+
+
+/*********************************************************
+*   CATALOG HEAD
+*********************************************************/
+.catalog-section .catalog-head{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.catalog-section .catalog-head h2 {
+    flex-basis: 100%;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: -1px;
+
+}
+.catalog-section .catalog-head .search-bar{
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #000;
+    font-family: sans-serif;
+    background: transparent;
+    /* Texts */
+    font-size: 16px;
+    font-family: inherit;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.catalog-section .catalog-head .search-bar:focus {
+    /* Responsiveness */
+    padding-left: 20px;
+    outline: none;
+}
+.catalog-section .catalog-head .search-bar:focus::placeholder {
+    opacity: 0;
+}
+.catalog-section .control-row{
+    flex:2;
+    display:flex;
+    gap: 30px;
+}
+.catalog-section .control-row select{
+    flex: 2;
+    padding: 15px;
+    border: 2px solid #000;
+}
+.catalog-section .control-row button{
+     flex: 1;
+
+
+
+        /* Responsiveness */
+    padding: 18px 60px;
+    position: relative;
+    /* Visual Effects */
+    background: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+    /* Texts */
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.catalog-section .control-row button::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    /* Visual Effects */
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+}
+.catalog-section .control-row button:hover {
+    /* Visual Effects */
+    background: transparent;
+    /* Texts */
+    color: #000;
+    /* Animations */
+    transform: translate(3px, 3px);
+}
+
+
+
+/*********************************************************
+*   CATALOG BODY
+*********************************************************/
+.catalog-body {
+    /* Responsiveness */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 2px;
+    margin-bottom: 100px;
+    gap: 20px;
+    /* Visual Effects */
+    
+}
+.catalog-body .item {
+    /* Responsiveness */
+    padding: 20px 20px;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    /* Visual Effects */
+    background: #fff;
+    border: 1px black solid;
+    border-left: 4px solid #000;
+    /* Texts */
+    text-align: left;
+
+
+
+    /* Animations */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.catalog-body .item:hover {
+    /* Visual Effects */
+    border-left-width: 8px;
+    /* Animations */
+    transform: translateX(10px);
+}
+.catalog-body .item::before{
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Visual Effects */
+    background: rgba(0, 0, 0, 0.06);
+    /* Animations */
+    transition: left 0.6s ease;
+}
+.catalog-body .item:hover::before{
+    left: 0px;
+}
+.catalog-body .item::after {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+    z-index: 0;
+    pointer-events: none;
+    /* Visual Effects */
+    border: 1px solid #000;;
+    /* Animations */
+        transform: rotate(45deg);
+    transition: all 0.3s ease;
+
+
+
+
+}
+.catalog-body .item:hover::after {
+    /* Animations */
+    transform: scale(1.5) rotate(45deg);
+    top: 40px;
+    right: 40px;
+    width: 40px;
+    height:40px;
+    /* Animations */
+    transform: rotate(90deg);
+
+}
+.catalog-body .item-title {
+    /* Responsiveness */
+    margin-bottom: 10px;
+    /* Texts */
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -2px;
+}
+.catalog-body .item-desc{
+    /* Responsiveness */
+    margin-bottom: 8px;
+    /* Texts */
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.catalog-body .item-tags {
+    font-size: 14px;
+    color: #666;
+}
+.catalog-body .item:has(input[type="checkbox"]:checked){
+    background-color: rgb(179, 37, 37);
+}
+.catalog-body .new-item{
+    background-color: rgb(63, 144, 30);
+}
+.catalog-body .item .select-btn{
+    width: 40px;
+    height: 40px;
+    accent-color: rgb(52, 52, 52);
+    transition: all 0.3s ease;
+}
+.catalog-body .item .select-btn::before{
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    width: 200%;
+    height: 100%;
+    pointer-events: none;
+    /* Visual Effects */
+    background: rgba(0, 0, 0, 0.06);
+    /* Animations */
+    transition: left 0.6s ease;
+}
+.catalog-body .item .select-btn:checked::before{
+    left: -20px;
+
+}
+.catalog-body .remove-container{
+    padding: 10px;
+    padding-left: 30px;
+    position: absolute;
+    bottom: 20px;
+    overflow: hidden;
+    right: 20px;
+    display: flex;
+    gap:20px;
+    align-items: center;
+
+}
+.catalog-body .remove-container .p{
+    font-size: 36;
+
+}
+
+
+
+/*********************************************************
+*   ADMIN CATALOG BODY
+*********************************************************/
+.catalog-body .add-new-desc{
+    /* Responsiveness */
+    margin-bottom: 8px;
+    /* Texts */
+    font-size: 138px;
+    font-weight: 10;
+    letter-spacing: 0.5px;
+}
+.catalog-foot form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+.add-section {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.add-section.active {
+    display: flex;
+}
+.modal-box {
+    background: white;
+    color: black;
+    width: 400px;
+    border: 1px black solid;
+    padding: 24px;
+
+}
+.modal-box input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border:1px black solid;
+
+}
+.modal-box textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border:1px black solid;
+}
+.modal-box textarea {
+    height: 120px;
+    resize: none;
+        border:1px black solid;
+}
+.modal-actions {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+.add-section button{
+    margin-top:10px;
+    padding: 6px;
+    background-color: rgb(0, 0, 0);
+    border: 1px black solid;
+    color: white;
+    transition: all 0.3s ease;
+}
+.add-section button:hover{
+    margin-top:10px;
+    padding: 7px;
+    background-color: white;
+    border: 1px black solid;
+    color: black;
+}

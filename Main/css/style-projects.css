@@ -1,5 +1,6 @@
-
-
+/*********************************************************
+*   CATALOG SECTION
+*********************************************************/
 .catalog-section {
     /* Responsiveness */
     padding: 120px 20px;
@@ -7,10 +8,11 @@
     /* Visual Effects */
     background: #fff;
 }
-
 .catalog-section .left-panel{
     padding: 40px;
 }
+
+
 
 /*********************************************************
 *   CATALOG HEAD
@@ -101,6 +103,8 @@
     /* Animations */
     transform: translate(3px, 3px);
 }
+
+
 
 /*********************************************************
 *   CATALOG BODY
@@ -207,11 +211,9 @@
     font-size: 14px;
     color: #666;
 }
-
 .catalog-body .item:has(input[type="checkbox"]:checked){
     background-color: rgb(179, 37, 37);
 }
-
 .catalog-body .new-item{
     background-color: rgb(63, 144, 30);
 }
@@ -256,6 +258,8 @@
 
 }
 
+
+
 /*********************************************************
 *   ADMIN CATALOG BODY
 *********************************************************/
@@ -275,13 +279,6 @@
     gap: 50px;
     margin-bottom: 40px;
 }
-
-
-
-
-
-
-
 .add-section {
     position: fixed;
     inset: 0;
@@ -294,7 +291,6 @@
 .add-section.active {
     display: flex;
 }
-
 .modal-box {
     background: white;
     color: black;
@@ -303,7 +299,6 @@
     padding: 24px;
 
 }
-
 .modal-box input{
     width: 100%;
     margin: 10px 0;
@@ -317,19 +312,16 @@
     padding: 10px;
     border:1px black solid;
 }
-
 .modal-box textarea {
     height: 120px;
     resize: none;
         border:1px black solid;
 }
-
 .modal-actions {
     display: flex;
     justify-content: end;
     gap: 20px;
 }
-
 .add-section button{
     margin-top:10px;
     padding: 6px;
@@ -338,7 +330,6 @@
     color: white;
     transition: all 0.3s ease;
 }
-
 .add-section button:hover{
     margin-top:10px;
     padding: 7px;

@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load group_tags %}
 
 
 <!DOCTYPE html>
@@ -32,13 +32,44 @@
                 <li><a href="{% url 'projects' %}" class="nav-link">PROJECTS</a></li>
                 <li><a href="{% url 'about' %}" class="nav-link">ABOUT</a></li>
                 <li><a href="{% url 'contact' %}" class="nav-link">CONTACT</a></li>
-                {% block authenticateBlock %}
-                <li>
-                    <a href="{% url 'authenticate' %}" class="nav-icon">
-                        <img src="{% static 'assets/icon.svg' %}" alt="Login">
-                    </a>
+
+
+
+
+
+                <li class="user-link">    {% if user.is_authenticated %}
+                    {% if user|has_group:"admin" %}
+                            
+                        <a href="{% url 'admin-dashboard' %}" class="nav-icon">
+                    {% elif user|has_group:"client" %}
+                        
+                        <a href="{% url 'client-dashboard' %}" class="nav-icon">
+                    {% else %}
+                        
+                        <a href="{% url 'user-dashboard' %}" class="nav-icon">
+                    {% endif %}
+                            <img src="{% static 'assets/icon.svg' %}" alt="Profile">
+                        
+                            <p>{{ user.username }}</p>
+                        </a>
+                    <form method="post" action="{% url 'logout' %}">
+                    
+                        {% csrf_token %}
+                        <button type="submit" class="logout-icon">
+                            <img src="{% static 'assets/icon2.svg' %}" alt="Logout">
+                        </button>
+                    </form>
+                    {% else %}
+                    
+                        <a href="{% url 'login' %}" class="nav-icon">
+                        
+                            <img src="{% static 'assets/icon.svg' %}" alt="Login">
+                        </a>
+                    {% endif %}
+                    
                 </li>
-                {% endblock %}
+    
+
             </ul>
         </div>
     </nav>

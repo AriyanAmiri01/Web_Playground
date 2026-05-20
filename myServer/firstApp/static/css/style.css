@@ -67,7 +67,7 @@ body {
     /* Responsiveness */
     position: fixed;
     top: 0;
-    padding: 20px 0;
+    padding: 10px 0;
     width: 100%;
     border-bottom: 2px solid #000;
     z-index: 1000;
@@ -148,6 +148,7 @@ body {
 .nav-bar .nav-links {
     /* Responsiveness */
     display: flex;
+    align-items: center;
     gap: 40px;
     /* Texts */
     list-style: none;
@@ -189,8 +190,8 @@ body {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 .nav-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,6 +201,29 @@ body {
     height: 100%;
     object-fit: contain;
 }
+
+
+.logout-icon{
+    position: relative;
+    background-color: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logout-icon img{
+    position:absolute;
+    left: -5px;
+    bottom: 10px;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor:pointer;
+}
+
 .nav-icon-auth {
     border: 2px black solid;
     width: 32px;
@@ -208,17 +232,29 @@ body {
     align-items: center;
     justify-content: center;
 }
-.nav-icon-auth::after {
-    content: 'Ariyan Amiri';
-    white-space: nowrap;
-    position: absolute;
-    top: 30px;
-}
 .nav-icon-auth img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
+.user-link{
+    display: flex;
+    align-items: center;
+}
+.user-link a{
+    position: relative;
+}
+.user-link p{
+
+    font-size: 10px;
+    position: absolute;
+    top: 20px;
+}
+
+
+
+
 
 /*********************************************************
 *   BUTTONS STUFF
@@ -287,6 +323,41 @@ body {
     border-right: 2px solid #000;
 }
 .cta-button:hover {
+    /* Visual Effects */
+    background: transparent;
+    color: #000;
+    /* Animations */
+    transform: translate(-5px, -5px);
+}
+.logout-btn {
+    /* Responsiveness */
+    display: inline-block;
+    padding: 2px 2px;
+    position: relative;
+    background: #ff0000;
+    /* Visual Effects */
+    color: #fff;
+    border: 2px solid #000;
+    /* Texts */
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    /* Animations */
+    transition: all 0.3s ease;
+}
+.logout-btn::before {
+    /* Responsiveness */
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    /* Visual Effects */
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+}
+.logout-btn:hover {
     /* Visual Effects */
     background: transparent;
     color: #000;

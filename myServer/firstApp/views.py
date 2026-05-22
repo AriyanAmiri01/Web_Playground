@@ -10,10 +10,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
-# For roles 
+# For roles and their permission
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .roles import is_admin, is_client, is_user
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 from .forms import RegisterForm
 
@@ -64,7 +65,6 @@ def user_dashboard(request):
     return render(request, "user-dashboard.html")
 
 
-
 #  Admin Project management
 def project_list(request):
     # Get projects in order of their start date
@@ -88,6 +88,8 @@ def project_list(request):
     return JsonResponse({"projects": data})
 
 @require_http_methods(["POST"])
+@permission_required('firstapp.add_project')
+@permission_required('firstapp.add_tag')
 def create_project(request):
     # Get the new item json data
     data = json.loads(request.body)
@@ -130,7 +132,10 @@ def create_project(request):
         "status": project.status,
     })
 
+@login_required
 @require_http_methods(["POST"])
+@permission_required('firstapp.change_project')
+@permission_required('firstapp.change_tag')
 def update_project(request, project_id):
     try:
         data = json.loads(request.body)
@@ -174,7 +179,10 @@ def update_project(request, project_id):
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
+@login_required
 @require_http_methods(["POST"])
+@permission_required('firstapp.delete_project')
+@permission_required('firstapp.delete_tag')
 def delete_project(request, project_id):
     project = Project.objects.get(id=project_id)
     project.delete()

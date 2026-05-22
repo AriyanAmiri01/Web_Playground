@@ -1,2 +1,162 @@
-<!-- admin_dashboard.html -->
-<h1>Admin Dashboard</h1>
+{%extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Admin Dash
+{% endblock %}
+
+{% block customStyles %}
+    <link href="{% static 'css/style-admin-dashboard.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block customScript %}
+    <script src="{% static 'js/projects-editor.js' %}"></script>
+    <script src="{% static 'js/dashboard-script.js' %}"></script>
+{% endblock %}
+
+{% block mainContent %}
+    <section class="frame-section">
+
+
+        <aside class="sidebar">
+            <h2>DASHBOARD</h2>
+            <button id="personalInfoBtnID">Personal Info</button>
+            <button id="projectsBtnID">Projects</button>
+            <button >Nothing more for now</button>
+            <button >Maybe Later</button>
+        </aside>
+
+
+        <main class="frame-content">
+            {% csrf_token %}
+
+            <div class="window" id="personalInfoWinID">
+                <p>I did not have enouth time to make this part complete</p>
+            </div>
+
+               
+            <!--Catalog Section -->
+            <div class="window" id="projectsWinID"> 
+                <div class="catalog-section" id="portfolioLayout">
+                <!-- Section.1 Left Panel (right is not developed yet) -->
+                <aside class="left-panel">
+                    <!-- Catalog Head-->
+                    <header class="catalog-head">
+                        <h2>Projects</h2>
+                        <input id="search-bar" type="search" class="search-bar" placeholder="Search projects..."/>
+                        <div class="control-row">
+                        
+                            <select>
+                                <option class="s">All Categories</option>
+                                <option>Graphics</option>
+                                <option>Compilers</option>
+                                <option>Game Engine</option>
+                            </select>
+                        
+                            <select>
+                                <option>Newest</option>
+                                <option>Oldest</option>
+                                <option>A-Z</option>
+                            </select>
+                        
+                            <button class="filter-btn">Filter</button>
+                        </div>
+                    </header>
+                
+                    <!-- Catalog Body-->
+                    <div class="catalog-body fade-in">
+                        <div class="item" id="item1">
+
+                            <div class="item-title">TITLE</div>
+                            <div class ="item-desc">  Delivering scalable and high-performance digital experiences throughmodern architecture, seamless integration..</div>
+                            <div class="item-tags">#Innovation #Excellence #Reliability #Performance #Scalability #Security#Optimization #Collaboration #Efficiency #Automation #Integration</div>
+                            <div class="remove-container">
+                                <p>Remove Card</p>
+                                <input type="checkbox" id="selectBtn1" class="select-btn">
+                            </div>
+                        </div>
+                        <div class="item add-new-item" id="addNewBtn">
+                            <div class="item-title">Add New</div>
+                            <div class="add-new-desc">+</div>
+                        </div>
+                    </div>
+
+                    <footer class="catalog-foot">
+                        <button type="button" id="save-change-button" class="button-1">
+                            Save Changes
+                        </button>
+                        <button type="button" id="discard-change-button" class="button-1">
+                            Discard Changes
+                        </button>
+                    </footer>
+                
+                </aside>
+            
+                <!-- A Break Line -->
+                <div class="black-line"></div>
+            
+                <!-- Right panel not developed yet -->
+                </div>
+            </div>
+            
+
+
+
+            <!-- New Item Section -->
+            <div class="add-section" id="modalOverlay">
+                <div class="modal-box">
+                    <h2>Create New Project</h2>
+
+                    <input id="projectTitle" type="text" placeholder="Project title">
+
+                    <textarea id="projectDesc" placeholder="Project description"></textarea>
+
+                    <input id="projectTags" type="text" placeholder="Tags: Vulkan, C++, Engine">
+
+                    <!-- REQUIRED -->
+                    <input id="projectStartDate"
+                           type="date">
+
+                    <!-- OPTIONAL -->
+                    <input id="projectEndDate"
+                           type="date">
+
+                    <!-- OPTIONAL -->
+                    <input id="projectGithub"
+                           type="url"
+                           placeholder="GitHub URL">
+
+                    <!-- REQUIRED -->
+                    <select id="projectStatus">
+                    
+                        <option value="planned">
+                            Planned
+                        </option>
+                    
+                        <option value="in_progress">
+                            In Progress
+                        </option>
+                    
+                        <option value="completed">
+                            Completed
+                        </option>
+                    
+                    </select>
+                
+                    <div class="modal-actions">
+                        <button id="cancelBtn">
+                            Cancel
+                        </button>
+                    
+                        <button id="createBtn">
+                            Create
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+    </section>
+{% endblock %}

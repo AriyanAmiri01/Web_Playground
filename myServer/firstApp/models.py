@@ -1,7 +1,7 @@
+# Models interfaces
 from django.db import models
 
 # Validation tools
-from django.db import models
 from django.core.exceptions import ValidationError
 
 class Tag(models.Model):
@@ -30,16 +30,17 @@ class Project(models.Model):
         choices=STATUS_CHOICES,
         default="planned"
     )
+    
 
     def clean(self):
         if self.end_date and self.end_date < self.start_date:
-            raise ValidationError("AriyanError: End date was before Start Date")
-
+            raise ValidationError("End date cannot be before start date.")
+    
         if self.status == "completed" and not self.end_date:
-            raise ValidationError("AriyanError: Null End date")
-
-        if self.status == "completed" and not self.github_link:
-            raise ValidationError("AriyanError: NullGithub link")
+            raise ValidationError("Completed projects must have an end date.")
+    
+        if self.status != "completed" and self.end_date:
+            raise ValidationError("Only completed projects can have an end date.")
 
     def __str__(self):
         return self.title

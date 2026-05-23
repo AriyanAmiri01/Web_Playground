@@ -1,72 +1,75 @@
-# rendering
-from django.shortcuts import render
+"""
+@file views.py
+@brief Django views for handling page rendering, dashboard access, and project CRUD.
+@author Ariyan Amiri
+@version 1.0
+@date 2026-05-23
+@see https://github.com/AriyanAmiri01/Web_Playground
+"""
 
-# test response
-from django.http import HttpResponse
+# Standard library
+import json
 
-
-# For authentication
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
-
-# For roles and their permission
-from django.contrib.auth.decorators import login_required, user_passes_test
-from .roles import is_admin, is_client, is_user
+# Django imports
+from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
-
-from .forms import RegisterForm
-from django.db.models import Q
-
-# for item handling
-import json
-from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
-from .models import Project
+from django.contrib.auth import login
+
+# My Model Stuff
 from .models import Project, Tag, ProjectLike
+from .roles import is_admin, is_client, is_user
 
 
 
-# GET requests
+# -------------------------------------------------------------------------
+# Public page views
+# -------------------------------------------------------------------------
 def getIndex(request):
     return render(request, "index.html")
- 
 def getContact(request):
     return render(request, "contact.html")
-
 def getProjects(request):
     return render(request, "projects.html")
-
 def getAbout(request):
     return render(request, "about.html")
-
 def getUserProf(request):
     return render(request, "user-profile.html")
-
 def getAuthenticate(request):
     return render(request, "authenticate.html")
 
 
-# Dashbaord GETS
+
+# -------------------------------------------------------------------------
+# Dashboard views
+# -------------------------------------------------------------------------
 @login_required
 @user_passes_test(is_admin)
 def admin_dashboard(request):
     return render(request, "admin-dashboard.html")
-
 @login_required
 @user_passes_test(is_client)
 def client_dashboard(request):
     return render(request, "client-dashboard.html")
-
 @login_required
 @user_passes_test(is_user)
 def user_dashboard(request):
     return render(request, "user-dashboard.html")
 
 
-#  Admin Project management
+
+# -------------------------------------------------------------------------
+# Project management views
+# -------------------------------------------------------------------------
 def project_list(request):
+    """
+    @brief Return projects as JSON after applying search, category, and sort filters.
+    """
+
     # Get projects in order of their start date
     projects = Project.objects.all()
 
@@ -124,6 +127,10 @@ def project_list(request):
 @permission_required('firstapp.add_project')
 @permission_required('firstapp.add_tag')
 def create_project(request):
+    """
+    @brief Create a new project and attach comma-separated tags.
+    """
+
     # Get the new item json data
     data = json.loads(request.body)
 
@@ -170,6 +177,9 @@ def create_project(request):
 @permission_required('firstapp.change_project')
 @permission_required('firstapp.change_tag')
 def update_project(request, project_id):
+    """
+    @brief Update an existing project and optionally replace its tags.
+    """
     try:
         data = json.loads(request.body)
         project = Project.objects.get(id=project_id)
@@ -217,6 +227,9 @@ def update_project(request, project_id):
 @permission_required('firstapp.delete_project')
 @permission_required('firstapp.delete_tag')
 def delete_project(request, project_id):
+    """
+    @brief  Delets the existing project using its ID.
+    """
     project = Project.objects.get(id=project_id)
     project.delete()
 
@@ -224,30 +237,31 @@ def delete_project(request, project_id):
 
 
 
-
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-
-
 @login_required
 @permission_required('firstapp.change_project')
 @permission_required('firstapp.change_project')
 def toggle_project_like(request, project_id):
-    print("toggle_project is called")
+    """
+    @brief Toggle the current user's like state for a project.
+    """
 
+    # Get the project instance
     project = get_object_or_404(Project, id=project_id)
 
+    # Get or create the record in the intermediate table
     like, created = ProjectLike.objects.get_or_create(
         project=project,
         user=request.user
     )
 
+    # Decide what to do next based on the existance of that record
     if not created:
         like.delete()
         liked = False
     else:
         liked = True
 
+    # Answer the HTTP request
     return JsonResponse({
         "liked": liked,
         "likes_count": project.likes.count()

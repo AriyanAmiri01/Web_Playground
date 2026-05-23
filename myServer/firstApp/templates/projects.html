@@ -1,4 +1,18 @@
-{%extends "base.html" %}
+"""
+@file projects.py
+@brief The page dedicated to my personal projects
+@details
+This template handles the projects page which mainly focuses scrips
+dependent on the django views to fill and render HTML elements.
+it also allows clients and admins to like projects while only shows
+the projects to the normal users
+@author Ariyan Amiri
+@version 1.0
+@date 2026-05-23
+@see https://github.com/AriyanAmiri01/Web_Playground
+"""
+
+%extends "base.html" %}
 {% load static %}
 
 {% block title %}
@@ -14,12 +28,12 @@
 {% endblock %}
 
 {% block mainContent %}
-    <!-- DJango Token -->
+    <!-- Section 0: DJango Token -->
     <form style="display: none;">
         {% csrf_token %}
     </form>
 
-       <!-- Section 2: Catalogue -->
+    <!-- Section 1: Catalogue -->
     <div class="catalog-section" id="portfolioLayout">
         <aside class="left-panel">
             <!-- Catalog Head-->
@@ -27,7 +41,6 @@
                 <h2>Projects</h2>
                 <input id="search-bar" type="search" class="search-bar" placeholder="Search projects..."/>
                 <div class="control-row">
-
                     <select id="category-filter">
                         <option value="" class="s">All Categories</option>
                         <option value="Graphics">Graphics</option>
@@ -35,69 +48,24 @@
                         <option value="Software Development">Game Engine</option>
                         <option value="Embedded System">Game Engine</option>
                     </select>
-
                     <select <select id="sort-filter">>
                         <option value="newest">Newest</option>
                         <option value="oldest">Oldest</option>
                         <option value="az">A-Z</option>
                     </select>
-
                     <button id="filter-btn" class="filter-btn">Filter</button>
                 </div>
             </header>
 
             <!-- Catalog Body-->
             <div class="catalog-body fade-in">
+                <!-- This things is filled out by the scripts and server -->
             </div>
         </aside>
         <div class="black-line"></div>
     </div>
 
     <!-- Section 2: Contact -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-grid fade-in">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <div class="info-item">
-                        <h4>Email</h4>
-                        <p>ariyan.amiri003@gmail.com</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Phone</h4>
-                        <p>+39 328 395 5513</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Location</h4>
-                        <p>Salita Padre Umile 17 Genova, Italy</p>
-                    </div>
-                </div>
-                
-                <div class="contact-divider"></div>
-                
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder=" " required>
-                            <label>Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder=" " required>
-                            <label>Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="4" placeholder=" " required></textarea>
-                            <label>Message</label>
-                        </div>
-                        <button type="submit" class="submit-btn">Send</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Section 4: Contact -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-grid fade-in">

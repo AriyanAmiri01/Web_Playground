@@ -1,6 +1,21 @@
+/*
+@file projects-reader.js
+@brief Loads, filters, renders, and updates project cards on the projects page.
+
+@details
+Fetches project data from the Django backend, renders project cards inside the
+catalog container, and handles project like requests using CSRF protection.
+
+@author Ariyan Amiri
+@version 1.0
+@date 2026-05-22
+@see https://github.com/AriyanAmiri01/Web_Playground
+*/
+
+
+
 // Main Entry
 document.addEventListener("DOMContentLoaded", () => {
-
     // Finds the CSRF token of the HTML page for the post request
     function getCSRFToken() {
         return document.querySelector("[name=csrfmiddlewaretoken]")?.value;
@@ -65,29 +80,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${project.likes_count ?? 0}
                 </span>
                 </button>
-
-
             `;
+
             // Append it to the catalog body
             catalogBody.appendChild(item);
             item.querySelector(".like-btn").addEventListener("click", async () => {
-            const response = await fetch(`/projects/${project.id}/like/`, {
-                method: "POST",
-                headers: {
-                    "X-CSRFToken": getCSRFToken(),
-                },
+                const response = await fetch(`/projects/${project.id}/like/`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": getCSRFToken(),
+                    },
+                });
+                // Reload the projects if everything gone right
+                if (response.ok) {
+                    loadProjects();
+                }
             });
-
-            if (response.ok) {
-            loadProjects();
-            }
         });
-    });
 
-    // Also adding the addNewItem for the Admin only
-    const addNew = document.createElement("div");
+        // Also adding the addNewItem for the Admin only
+        const addNew = document.createElement("div");
 
-    catalogBody.appendChild(addNew);
+        // Add the new html element to the catalogBody
+        catalogBody.appendChild(addNew);
     }
 
     // Add the event listener for searching stuff

@@ -14,6 +14,11 @@
 {% endblock %}
 
 {% block mainContent %}
+    <!-- DJango Token -->
+    <form style="display: none;">
+        {% csrf_token %}
+    </form>
+
        <!-- Section 2: Catalogue -->
     <div class="catalog-section" id="portfolioLayout">
         <aside class="left-panel">
@@ -23,20 +28,21 @@
                 <input id="search-bar" type="search" class="search-bar" placeholder="Search projects..."/>
                 <div class="control-row">
 
-                    <select>
-                        <option class="s">All Categories</option>
-                        <option>Graphics</option>
-                        <option>Compilers</option>
-                        <option>Game Engine</option>
+                    <select id="category-filter">
+                        <option value="" class="s">All Categories</option>
+                        <option value="Graphics">Graphics</option>
+                        <option value="Computations">Compilers</option>
+                        <option value="Software Development">Game Engine</option>
+                        <option value="Embedded System">Game Engine</option>
                     </select>
 
-                    <select>
-                        <option>Newest</option>
-                        <option>Oldest</option>
-                        <option>A-Z</option>
+                    <select <select id="sort-filter">>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="az">A-Z</option>
                     </select>
 
-                    <button class="filter-btn">Filter</button>
+                    <button id="filter-btn" class="filter-btn">Filter</button>
                 </div>
             </header>
 

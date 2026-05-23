@@ -17,14 +17,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
 from .forms import RegisterForm
-
+from django.db.models import Q
 
 # for item handling
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from .models import Project
-from .models import Project, Tag
+from .models import Project, Tag, ProjectLike
 
 
 
@@ -68,7 +68,34 @@ def user_dashboard(request):
 #  Admin Project management
 def project_list(request):
     # Get projects in order of their start date
-    projects = Project.objects.all().order_by("-start_date")
+    projects = Project.objects.all()
+
+    # Extract search parameter from http request
+    search = request.GET.get("search")
+    category = request.GET.get("category")
+    sort = request.GET.get("sort", "newest")
+
+    # Apply the search filter
+    if search:
+        projects = projects.filter(
+            Q(title__icontains=search) |
+            Q(description__icontains=search) |
+            Q(tags__name__icontains=search)
+        ).distinct()
+
+    # Apply the category filter
+    if category:
+        projects = projects.filter(category=category)
+
+    # Apply the sorting filter
+    if sort == "newest":
+        projects = projects.order_by("-start_date")
+    elif sort == "oldest":
+        projects = projects.order_by("start_date")
+    elif sort == "az":
+        projects = projects.order_by("title")
+    else:
+        projects = projects.order_by("-start_date")
 
     # preparing the json response
     data = []
@@ -82,10 +109,16 @@ def project_list(request):
             "start_date": project.start_date.isoformat(),
             "end_date": project.end_date.isoformat() if project.end_date else None,
             "status": project.status,
+            "likes_count": project.likes.count(),
+            "liked_by_user": (
+                request.user.is_authenticated and
+                project.likes.filter(user=request.user).exists()
+            ),
         })
 
     # sending json response to the client
     return JsonResponse({"projects": data})
+    
 
 @require_http_methods(["POST"])
 @permission_required('firstapp.add_project')
@@ -188,3 +221,34 @@ def delete_project(request, project_id):
     project.delete()
 
     return JsonResponse({"success": True})
+
+
+
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+@permission_required('firstapp.change_project')
+@permission_required('firstapp.change_project')
+def toggle_project_like(request, project_id):
+    print("toggle_project is called")
+
+    project = get_object_or_404(Project, id=project_id)
+
+    like, created = ProjectLike.objects.get_or_create(
+        project=project,
+        user=request.user
+    )
+
+    if not created:
+        like.delete()
+        liked = False
+    else:
+        liked = True
+
+    return JsonResponse({
+        "liked": liked,
+        "likes_count": project.likes.count()
+    })

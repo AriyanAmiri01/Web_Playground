@@ -13,11 +13,15 @@ in my portfolio.
 @see https://github.com/AriyanAmiri01/Web_Playground
 """
 
+# A utility for accessing project configuration values
+from django.conf import settings
+
 # Django Object Relation Mapping stuffs and interfaces
 from django.db import models
 
 # Validation Stuff
 from django.core.exceptions import ValidationError
+
 
 # The Model that gives info about what is project all about
 class Tag(models.Model):
@@ -51,6 +55,14 @@ class Project(models.Model):
         ("completed", "Completed"),
     ]
 
+    #: Available category choices status values
+    CATEGORY_CHOICES = [
+        ("Graphics", "Graphics"),
+        ("Computations", "Computations"),
+        ("Software Development", "Software Development"),
+        ("Embedded System", "Embedded System"),
+    ]
+
     #: Unique project title
     title = models.CharField(max_length=100, unique=True)
 
@@ -75,6 +87,13 @@ class Project(models.Model):
         choices=STATUS_CHOICES,
         default="planned"
     )
+
+    # Category section
+    category = models.CharField(
+        max_length=100,
+        choices=CATEGORY_CHOICES,
+        default="Graphics"
+    )
     
     # Periodic validation for consistency
     def clean(self):
@@ -89,3 +108,27 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+# A complex structure for keep track of likes
+class ProjectLike(models.Model):
+    # I did used some chatGPU for this one because i i
+    # did not know how to deal with intermediate table.
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        related_name="likes"
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="project_likes"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("project", "user")
+
+    def __str__(self):
+        return f"{self.user} liked {self.project}"

@@ -12,13 +12,16 @@ urlpatterns = [
     path("projects/", views.getProjects, name="projects"),
     path("contact/", views.getContact, name="contact"),
     path("user-profile/", views.getUserProf, name="user-profile"),
-    #path("authenticate/", views.getAuthenticate, name="authenticate"),
     
+    # Admin project API stuff
     path("api/projects/", views.project_list, name="project_list"),
     path("api/projects/create/", views.create_project, name="create_project"),
     path("api/projects/<int:project_id>/update/", views.update_project, name="update_project"),
     path("api/projects/<int:project_id>/delete/", views.delete_project, name="delete_project"),
     
+    # Client project Stuff
+    path("projects/<int:project_id>/like/",views.toggle_project_like,name="toggle_project_like"),
+
     # dashboard URLs 
     path("admin-dashboard/", views.admin_dashboard, name="admin-dashboard"),
     path("client-dashboard/", views.client_dashboard, name="client-dashboard"),

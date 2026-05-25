@@ -31,7 +31,7 @@ from .models import Project, Tag, ProjectLike
 from .roles import *
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-
+from django import forms
 
 # Translation stuffs
 from django.utils.translation import gettext as _

@@ -26,6 +26,6 @@ urlpatterns = [
     path("login/", views.login_user, name="login"),
     path("signup/", views.signup_user, name="signup"),
     path("logout/", LogoutView.as_view(), name="logout"),
-
+    path("projects/<int:project_id>/like/",views.toggle_project_like,name="toggle_project_like"), # For liking
     path("set-language/", views.set_language_preference, name="set_language_preference"),
 ]

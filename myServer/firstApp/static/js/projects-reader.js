@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return document.querySelector("[name=csrfmiddlewaretoken]")?.value;
     }
 
+    // For pagination 
+    let currentPage = 1;
+
     // Loads the projects
     async function loadProjects() {
         // Get the searching stuffs
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Get Searching Params to be passed to the django server
         const params = new URLSearchParams();
+        if(currentPage) params.append("page", currentPage);
         if (search) params.append("search", search);
         if (category) params.append("category", category);
         if (sort) params.append("sort", sort);
@@ -48,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Get the datas from its response
         const data = await response.json();
+
+
 
         // Get catalogBody for rendering newly fetched data
         const catalogBody = document.querySelector(".catalog-body");
@@ -84,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Append it to the catalog body
             catalogBody.appendChild(item);
+
+            // Add the link event
             item.querySelector(".like-btn").addEventListener("click", async () => {
                 const response = await fetch(`/projects/${project.id}/like/`, {
                     method: "POST",
@@ -97,6 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
+        // Pagination buttons state
+        document.querySelector("#prev-btn").disabled =
+        !data.pagination.has_previous;
+        document.querySelector("#next-btn").disabled =
+        !data.pagination.has_next;
+
 
         // Also adding the addNewItem for the Admin only
         const addNew = document.createElement("div");
@@ -106,7 +120,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Add the event listener for searching stuff
-    document.querySelector("#filter-btn").addEventListener("click", loadProjects);
+    document.querySelector("#filter-btn").addEventListener("click", () => {
+        currentPage = 1;
+        loadProjects();
+    });
 
+    // Previous page
+    document.querySelector("#prev-btn").addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                loadProjects();
+            }
+    });
+
+    // Next page
+    document.querySelector("#next-btn").addEventListener("click", () => {
+        currentPage++;loadProjects();
+    });
+    
     loadProjects();
 });

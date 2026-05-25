@@ -29,7 +29,7 @@ from django.contrib.auth import authenticate, login
 # My Model Stuff
 from .models import Project, Tag, ProjectLike
 from .roles import is_admin, is_client, is_user
-
+from django.core.paginator import Paginator
 
 
 
@@ -123,7 +123,7 @@ def project_list(request):
     category = request.GET.get("category")
     sort = request.GET.get("sort", "newest")
 
-    # Apply the search filter
+    # Apply the search filter 
     if search:
         projects = projects.filter(
             Q(title__icontains=search) |
@@ -145,9 +145,14 @@ def project_list(request):
     else:
         projects = projects.order_by("-start_date")
 
+    # Pagination
+    page_number = request.GET.get("page", 1)
+    paginator = Paginator(projects, 5)
+    page_obj = paginator.get_page(page_number)
+
     # preparing the json response
     data = []
-    for project in projects:
+    for project in page_obj:
         data.append({
             "id": project.id,
             "title": project.title,
@@ -165,7 +170,15 @@ def project_list(request):
         })
 
     # sending json response to the client
-    return JsonResponse({"projects": data})
+    return JsonResponse({
+    "projects": data,
+    "pagination": {
+        "current_page": page_obj.number,
+        "total_pages": paginator.num_pages,
+        "has_previous": page_obj.has_previous(),
+        "has_next": page_obj.has_next(),
+    }
+    })
     
 
 @require_http_methods(["POST"])

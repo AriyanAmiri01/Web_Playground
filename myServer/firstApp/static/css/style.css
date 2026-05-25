@@ -57,9 +57,37 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+.alert{
+    display: block;
+    position:fixed;
+    width: 200px;
+    height: 150px;
+    top: 25%;
+    left: calc(25% + 200px);
+    z-index: 1000;
+    background-color: rgba(221, 0, 0, 0.67);
+    border: black 2px solid;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+    animation: disappear 4s forwards;
+}
 
+@keyframes disappear {
 
+    0% {
+        opacity: 1;
+    }
 
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 /*********************************************************
 *   NAVBAR STUFF
 *********************************************************/

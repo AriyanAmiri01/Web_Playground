@@ -28,9 +28,9 @@ from django.contrib.auth import authenticate, login
 
 # My Model Stuff
 from .models import Project, Tag, ProjectLike
-from .roles import is_admin, is_client, is_user
+from .roles import *
 from django.core.paginator import Paginator
-
+from django.contrib.auth.models import User
 
 
 # Translation stuffs
@@ -55,6 +55,64 @@ def getAuthenticate(request):
 # Custom Authentication
 # -------------------------------------------------------------------------
 
+def login_user(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+
+            login(request, user)
+
+            messages.success(
+                request,
+                f"Welcome back {username}"
+            )
+
+            return redirect("index")
+
+        else:
+
+            messages.error(
+                request,
+                "Invalid username or password"
+            )
+
+    return render(request, "authenticate.html")
+
+def signup_user(request):
+    if request.method == "POST":
+        first_name = request.POST.get("firstName")
+        last_name = request.POST.get("lastName")
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists")
+            return redirect("login")
+
+        User.objects.create_user(
+            username=username,
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name
+        )
+
+        messages.success(request, "Account created successfully. You can now log in.")
+        return redirect("login")
+
+    return redirect("login")
+
 def authenticate_user(request):
     # Post part
     if request.method == "POST":
@@ -72,9 +130,22 @@ def authenticate_user(request):
         if user is not None:
             # Create Django session
             login(request, user)
-            # Optional custom session data
+
+            # Custom session data
             request.session["username"] = user.username
-            return redirect("home")
+
+            # Put the success message
+            messages.success(
+                request,
+                f"Welcome back {user.username}."
+            )
+            return redirect("index")
+
+        # Put the failure message
+        messages.error(
+            request,
+            "Invalid username or password."
+        )
 
         # Respond the http request
         return HttpResponse("Invalid username or password")
@@ -92,16 +163,17 @@ def profile(request):
 # -------------------------------------------------------------------------
 # Dashboard views
 # -------------------------------------------------------------------------
-@login_required
-@user_passes_test(is_admin)
+@admin_required
 def admin_dashboard(request):
     return render(request, "admin-dashboard.html")
-@login_required
-@user_passes_test(is_client)
+
+
+
+@client_required
 def client_dashboard(request):
     return render(request, "client-dashboard.html")
-@login_required
-@user_passes_test(is_user)
+
+@user_required
 def user_dashboard(request):
     return render(request, "user-dashboard.html")
 

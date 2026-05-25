@@ -22,7 +22,9 @@ urlpatterns = [
     path("admin-dashboard/", views.admin_dashboard, name="admin-dashboard"),
     path("client-dashboard/", views.client_dashboard, name="client-dashboard"),
     path("user-dashboard/", views.user_dashboard, name="user-dashboard"),
-    path("login/", LoginView.as_view(template_name="authenticate.html"), name="login"),
+    path("authenticate/", LoginView.as_view(template_name="authenticate.html"), name="authenticate"),
+    path("login/", views.login_user, name="login"),
+    path("signup/", views.signup_user, name="signup"),
     path("logout/", LogoutView.as_view(), name="logout"),
 
     path("set-language/", views.set_language_preference, name="set_language_preference"),

@@ -11,7 +11,6 @@ urlpatterns = [
     path("about/", views.getAbout, name="about"),
     path("projects/", views.getProjects, name="projects"),
     path("contact/", views.getContact, name="contact"),
-    path("user-profile/", views.getUserProf, name="user-profile"),
     
     # Admin project API stuff
     path("api/projects/", views.project_list, name="project_list"),

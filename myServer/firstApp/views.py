@@ -24,7 +24,7 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 
 # My Model Stuff
 from .models import Project, Tag, ProjectLike
@@ -48,48 +48,38 @@ def getProjects(request):
     return render(request, "projects.html")
 def getAbout(request):
     return render(request, "about.html")
-def getUserProf(request):
-    return render(request, "user-profile.html")
 def getAuthenticate(request):
     return render(request, "authenticate.html")
 
 # -------------------------------------------------------------------------
 # Custom Authentication
 # -------------------------------------------------------------------------
+
 def authenticate_user(request):
     # Post part
     if request.method == "POST":
         # Extract usename and password from the request
         username = request.POST.get("username")
         password = request.POST.get("password")
-
-        # Authenticate the user
+        
+        # Authenticate user
         user = authenticate(
             request,
             username=username,
             password=password
         )
-
-        # login and handle session if it was done correcly
+        # Handle session stuff
         if user is not None:
-            # Django session login
+            # Create Django session
             login(request, user)
-
-            # Add username to the session 
+            # Optional custom session data
             request.session["username"] = user.username
+            return redirect("home")
 
-
-            # Set the cookiie
-            response.set_cookie(
-                "theme",
-                "dark",
-                max_age=3600
-            )
-
-            return response
-
+        # Respond the http request
         return HttpResponse("Invalid username or password")
 
+     # Respond the http request
     return render(request, "authenticate.html")
 
 def profile(request):
@@ -294,7 +284,7 @@ def delete_project(request, project_id):
 
 @login_required
 @permission_required('firstapp.change_project')
-@permission_required('firstapp.change_project')
+@permission_required('firstapp.change_tag')
 def toggle_project_like(request, project_id):
     """
     @brief Toggle the current user's like state for a project.

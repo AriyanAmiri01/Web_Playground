@@ -1,2 +1,16 @@
 <!-- admin_dashboard.html -->
 <h1>Client Dashboard</h1>
+
+
+<h1>Current language: {{ language }}</h1>
+<form method="post" action="{% url 'set_language_preference' %}">
+    {% csrf_token %}
+
+    <select name="language">
+        <option value="en">English</option>
+        <option value="it">Italian</option>
+        <option value="fa">Persian</option>
+    </select>
+
+    <button type="submit">Save</button>
+</form>

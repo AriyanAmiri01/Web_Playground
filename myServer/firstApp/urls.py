@@ -18,9 +18,6 @@ urlpatterns = [
     path("api/projects/create/", views.create_project, name="create_project"),
     path("api/projects/<int:project_id>/update/", views.update_project, name="update_project"),
     path("api/projects/<int:project_id>/delete/", views.delete_project, name="delete_project"),
-    
-    # Client project Stuff
-    path("projects/<int:project_id>/like/",views.toggle_project_like,name="toggle_project_like"),
 
     # dashboard URLs 
     path("admin-dashboard/", views.admin_dashboard, name="admin-dashboard"),
@@ -28,4 +25,6 @@ urlpatterns = [
     path("user-dashboard/", views.user_dashboard, name="user-dashboard"),
     path("login/", LoginView.as_view(template_name="authenticate.html"), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+
+    path("set-language/", views.set_language_preference, name="set_language_preference"),
 ]

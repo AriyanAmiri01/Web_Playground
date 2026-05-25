@@ -10,6 +10,11 @@
 # Standard library
 import json
 
+
+#django-admin compilemessages
+# django-admin makemessages -l it
+
+
 # Django imports
 from django.db.models import Q
 from django.http import JsonResponse
@@ -18,12 +23,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
+from django.http import HttpResponse
 from django.contrib.auth import login
 
 # My Model Stuff
 from .models import Project, Tag, ProjectLike
 from .roles import is_admin, is_client, is_user
 
+
+
+
+# Translation stuffs
+from django.utils.translation import gettext as _
 
 
 # -------------------------------------------------------------------------
@@ -42,7 +53,51 @@ def getUserProf(request):
 def getAuthenticate(request):
     return render(request, "authenticate.html")
 
+# -------------------------------------------------------------------------
+# Custom Authentication
+# -------------------------------------------------------------------------
+def authenticate_user(request):
+    # Post part
+    if request.method == "POST":
+        # Extract usename and password from the request
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
+        # Authenticate the user
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        # login and handle session if it was done correcly
+        if user is not None:
+            # Django session login
+            login(request, user)
+
+            # Add username to the session 
+            request.session["username"] = user.username
+
+
+            # Set the cookiie
+            response.set_cookie(
+                "theme",
+                "dark",
+                max_age=3600
+            )
+
+            return response
+
+        return HttpResponse("Invalid username or password")
+
+    return render(request, "authenticate.html")
+
+def profile(request):
+
+    if request.user.is_authenticated:
+        return HttpResponse(request.user.username)
+
+    return HttpResponse("Not logged in")
 
 # -------------------------------------------------------------------------
 # Dashboard views
@@ -266,3 +321,40 @@ def toggle_project_like(request, project_id):
         "liked": liked,
         "likes_count": project.likes.count()
     })
+
+
+
+# -------------------------------------------------------------------------
+# Session and Cookie Management
+# -------------------------------------------------------------------------
+def set_language_preference(request):
+    # Extract the language from the http request
+    language = request.POST.get("language", "en")
+
+    # Add the language with its key to the session
+    request.session["language"] = language
+
+    # Redirect user to the same page that it was before
+    response = redirect(request.META.get("HTTP_REFERER", "/"))
+
+    # Set user cookie for one year
+    response.set_cookie(
+        "language",
+        language,
+        max_age=60 * 60 * 24 * 365,  # 1 year
+        samesite="Lax",
+    )
+
+    # return the response
+    return response
+
+def my_view(request):
+    language = request.session.get("language")
+
+    if language is None:
+        language = request.COOKIES.get("language", "en")
+
+    return render(request, "page.html", {
+        "language": language,
+    })
+

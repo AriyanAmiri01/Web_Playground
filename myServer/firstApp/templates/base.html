@@ -1,8 +1,14 @@
 {% load static %}
 {% load group_tags %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 
 <head>
     <meta charset="UTF-8">
@@ -28,7 +34,7 @@
                 <span></span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="{% url 'index' %}" class="nav-link">HOME</a></li>
+                <li><a href="{% url 'index' %}" class="nav-link">{% trans "HOME" %}</a></li>
                 <li><a href="{% url 'projects' %}" class="nav-link">PROJECTS</a></li>
                 <li><a href="{% url 'about' %}" class="nav-link">ABOUT</a></li>
                 <li><a href="{% url 'contact' %}" class="nav-link">CONTACT</a></li>

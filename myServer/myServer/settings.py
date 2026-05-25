@@ -61,6 +61,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
 ]
 
 ROOT_URLCONF = "myServer.urls"
@@ -75,11 +76,25 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "firstApp.context_processors.language_preference",
             ],
         },
     },
 ]
 
+
+# Enabling language translation
+LANGUAGE_CODE = "it"
+
+USE_I18N = True
+
+LANGUAGES = [
+    ("en", "English"),
+    ("it", "Italian"),
+    ("fa", "Persian"),
+]
+
+# {% trans "" %}
 WSGI_APPLICATION = "myServer.wsgi.application"
 
 
@@ -116,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+
 
 TIME_ZONE = "UTC"
 

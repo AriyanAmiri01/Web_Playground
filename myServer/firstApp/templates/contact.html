@@ -1,8 +1,10 @@
-{%extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
+{% load group_tags %}
+{% load i18n %}
 
 {% block title %}
-    Contact Me
+    {% trans "Contact Me" %}
 {% endblock %}
 
 {% block customStyles %}
@@ -18,124 +20,38 @@
         <div class="container">
             <div class="contact-grid fade-in">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
+                    <h2>{% trans "Get In Touch" %}</h2>
                     <div class="info-item">
-                        <h4>Email</h4>
+                        <h4>{% trans "Email" %}</h4>
                         <p>ariyan.amiri003@gmail.com</p>
                     </div>
                     <div class="info-item">
-                        <h4>Phone</h4>
+                        <h4>{% trans "Phone" %}</h4>
                         <p>+39 328 395 5513</p>
                     </div>
                     <div class="info-item">
-                        <h4>Location</h4>
-                        <p>Salita Padre Umile 17 Genova, Italy</p>
+                        <h4>{% trans "Location" %}</h4>
+                        <p>Somewhere</p>
                     </div>
                 </div>
-                
-                <div class="contact-divider"></div>
-                
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder=" " required>
-                            <label>Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder=" " required>
-                            <label>Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="4" placeholder=" " required></textarea>
-                            <label>Message</label>
-                        </div>
-                        <button type="submit" class="submit-btn">Send</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="services-header fade-in">
-                <h2>What Do I Do</h2>
-            </div>
-            
-            <div class="asymmetric-grid fade-in">
-                <div class="service-large">
-                    <h3>Embeded System</h3>
-                    <p>Designing low-level systems that communicate directly with hardware.From microcontrollers and device drivers to real-time applications,I build efficient and reliable solutions with a strong focus on performance,memory management, and hardware integration.</p>
-                    <a href="#contact" class="service-tag">View Work</a>
-                </div>
-                <div class="service-small">
-                    <div class="service-number">01</div>
-                    <h4>Low Level Vission</h4>
-                </div>
-            </div>
-            
-            <div class="asymmetric-grid reverse fade-in">
-                <div class="service-small">
-                    <div class="service-number">02</div>
-                    <h4>System Driven</h4>
-                </div>
-                <div class="service-large">
-                    <h3>Software Development</h3>
-                    <p>Building scalable and maintainable software using modern C++ andsystem-level programming techniques. I focus on clean architecture,debugging, performance optimization, and creating applications thatare both efficient and easy to extend.</p>
-                    <a href="#contact" class="service-tag">Explore</a>
-                </div>
-            </div>
-            
-            <div class="asymmetric-grid fade-in">
-                <div class="service-large">
-                    <h3>Graphics Programming</h3>
-                    <p>Developing rendering systems and graphics pipelines using APIs such asDirectX, OpenGL, and Vulkan. My work includes shaders, GPU programming,real-time rendering, and low-level graphics optimization for interactiveapplications and game engines.</p>
-                    <a href="#contact" class="service-tag">Discover</a>
-                </div>
-                <div class="service-small">
-                    <div class="service-number">03</div>
-                    <h4>Performance Focused</h4>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section 4: Contact -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-grid fade-in">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <div class="info-item">
-                        <h4>Email</h4>
-                        <p>ariyan.amiri003@gmail.com</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Phone</h4>
-                        <p>+39 328 395 5513</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Location</h4>
-                        <p>Salita Padre Umile 17 Genova, Italy</p>
-                    </div>
-                </div>
-                
                 <div class="contact-divider"></div>
                 
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder=" " required>
-                            <label>Name</label>
+                            <input type="text" placeholder="Name" required>
+                            <label>{% trans "Name" %}</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder=" " required>
-                            <label>Email</label>
+                            <input type="email" placeholder="Email" required>
+                            <label>{% trans "Email" %}</label>
                         </div>
                         <div class="form-group">
-                            <textarea rows="4" placeholder=" " required></textarea>
-                            <label>Message</label>
+                            <textarea rows="4" placeholder="Message" required></textarea>
+                            <label>{% trans "Message" %}</label>
                         </div>
-                        <button type="submit" class="submit-btn">Send</button>
+                        <button type="submit" class="submit-btn">{% trans "Send" %}</button>
                     </form>
                 </div>
             </div>

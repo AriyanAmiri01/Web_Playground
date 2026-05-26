@@ -1,8 +1,9 @@
 {%extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Index Page
+    {% trans "Index Page" %}
 {% endblock %}
 
 {% block customStyles %}
@@ -23,9 +24,9 @@
         </div>
         <div class="hero-decoration"></div>
         <div class="hero-content">
-            <h1>MY IDENTITY</h1>
-            <p class="subtitle">Low Level Programmer</p>
-            <a href="#about" class="cta-button">EXPLORE</a>
+            <h1>{% trans "WHO AM I?" %}</h1>
+            <p class="subtitle">{% trans "Low Level Programmer" %}</p>
+            <a href="#" class="cta-button">{% trans "EXPLORE" %}</a>
         </div>
     </section>
 
@@ -36,7 +37,7 @@
             <div class="quote-section fade-in">
                 <div class="quote-block">
                     <span class="quote-mark">"</span>
-                    <h3>Trust is the lubrication that makes it possible for organizations to work.</h3>
+                    <h3>{% trans "Trust is the lubrication that makes it possible for organizations to work." %}</h3>
                     <div class="quote-author">
                         <span class="author-line"></span>
                         <p>Peter Drucker</p>
@@ -52,23 +53,23 @@
             <!-- Experience Stats Section -->
             <div class="stats-grid-section fade-in">
                 <div class="stat-item">
-                    <div class="stat-number">0%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">{% trans "Client Satisfaction" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">5+</div>
-                    <div class="stat-label">Personal Projects</div>
+                    <div class="stat-label">{% trans "Personal Projects" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">{% trans "Years Experience" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">∞</div>
-                    <div class="stat-label">Passion</div>
+                    <div class="stat-label">{% trans "Passion" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
             </div>
@@ -77,28 +78,28 @@
             <!-- Philosophy Section with offset layout -->
             <div class="philosophy-section fade-in">
                 <div class="philosophy-header">
-                    <h2>Philosophy</h2>
+                    <h2>{% trans "Philosophy" %}</h2>
                     <div class="header-decoration"></div>
                 </div>
                 <div class="philosophy-content">
                     <div class="philosophy-main">
-                        <p class="lead-text">Great systems are never built alone — they are shaped through trust, discipline, and people moving toward the same vision.</p>
+                        <p class="lead-text">{% trans "Great systems are never built alone — they are shaped through trust, discipline, and people moving toward the same vision." %}</p>
                     </div>
                     <div class="philosophy-points">
                         <div class="point-item">
                             <span class="point-number">01</span>
-                            <h4>Clarity</h4>
-                            <p>Writing understandable code and communicating ideas precisely.</p>
+                            <h4>{% trans "Clarity" %}</h4>
+                            <p>{% trans "Writing understandable code and communicating ideas precisely." %}</p>
                         </div>
                         <div class="point-item">
                             <span class="point-number">02</span>
-                            <h4>Reliability</h4>
-                            <p>Delivering consistent work others can depend on.</p>
+                            <h4>{% trans "Reliability" %}</h4>
+                            <p>{% trans "Delivering consistent work others can depend on." %}</p>
                         </div>
                         <div class="point-item">
                             <span class="point-number">03</span>
-                            <h4>Collaboration</h4>
-                            <p>Building strong results through communication, trust, and teamwork.</p>
+                            <h4>{% trans "Collaboration" %}</h4>
+                            <p>{% trans "Building strong results through communication, trust, and teamwork." %}</p>
                         </div>
                     </div>
                 </div>
@@ -107,35 +108,35 @@
             
             <!-- Process Timeline Section -->
             <div class="process-timeline-section fade-in">
-                <h2 class="section-subtitle">Our Process</h2>
+                <h2 class="section-subtitle">My Process</h2>
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h4>Connection</h4>
-                            <p>— Establish shared vision and values.</p>
+                            <h4>{% trans "Connection" %}</h4>
+                            <p>— {% trans "Establish shared vision and values." %} </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h4>Understanding</h4>
-                            <p>— Recognize strengths and potential.</p>
+                            <h4>{% trans "Understanding" %}</h4>
+                            <p>— {% trans "Recognize strengths and potential." %}</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h4>Commitment</h4>
-                            <p> — Build reliability and mutual trust.</p>
+                            <h4>{% trans "Commitment" %}</h4>
+                            <p> — {% trans "Build reliability and mutual trust." %}</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h4>Creation</h4>
-                            <p>— Achieve meaningful work together.</p>
+                            <h4>{% trans "Creation" %}</h4>
+                            <p>— {% trans "Achieve meaningful work together." %}</p>
                         </div>
                     </div>
                 </div>
@@ -146,26 +147,26 @@
             <div class="values-grid-section fade-in">
                 <div class="values-header">
                     <div class="black-square"></div>
-                    <h2>Core Values</h2>
+                    <h2>{% trans "Core Values" %}</h2>
                     <div class="black-square"></div>
                 </div>
                 <div class="values-grid">
                     <div class="value-card">
                         <div class="value-icon">—</div>
-                        <h4>Semplicity</h4>
+                        <h4>{% trans "Semplicity" %}</h4>
                     </div>
                     <div class="value-card black">
                         <div class="value-icon">+</div>
-                        <h4>Efficiency</h4>
+                        <h4>{% trans "Efficiency" %}</h4>
                     </div>
                     <div class="value-card black">
                         <div class="value-icon">○</div>
-                        <h4>Reliability</h4>
+                        <h4>{% trans "Reliability" %}</h4>
                     </div>
 
                     <div class="value-card">
                         <div class="value-icon">□</div>
-                        <h4>Scalability</h4>
+                        <h4>{% trans "Scalability" %}</h4>
                     </div>
                 </div>
             </div>
@@ -176,42 +177,42 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="services-header fade-in">
-                <h2>What Do I Do</h2>
+                <h2>{% trans "What Do I Do" %}</h2>
             </div>
             
             <div class="asymmetric-grid fade-in">
                 <div class="service-large">
-                    <h3>Embeded System</h3>
-                    <p>Designing low-level systems that communicate directly with hardware.From microcontrollers and device drivers to real-time applications,I build efficient and reliable solutions with a strong focus on performance,memory management, and hardware integration.</p>
-                    <a href="#contact" class="service-tag">View Work</a>
+                    <h3>{% trans "Embedded System" %}</h3>
+                    <p>{% trans "Designing low-level systems that communicate directly with hardware.From microcontrollers and device drivers to real-time applications,I build efficient and reliable solutions with a strong focus on performance,memory management, and hardware integration." %}</p>
+                    <a href="#contact" class="service-tag">{% trans "View Work" %}</a>
                 </div>
                 <div class="service-small">
                     <div class="service-number">01</div>
-                    <h4>Low Level Vission</h4>
+                    <h4>{% trans "Low Level Vission" %}</h4>
                 </div>
             </div>
             
             <div class="asymmetric-grid reverse fade-in">
                 <div class="service-small">
                     <div class="service-number">02</div>
-                    <h4>System Driven</h4>
+                    <h4>{% trans "System Driven" %}</h4>
                 </div>
                 <div class="service-large">
-                    <h3>Software Development</h3>
-                    <p>Building scalable and maintainable software using modern C++ andsystem-level programming techniques. I focus on clean architecture,debugging, performance optimization, and creating applications thatare both efficient and easy to extend.</p>
-                    <a href="#contact" class="service-tag">Explore</a>
+                    <h3>{% trans "Software Development" %}</h3>
+                    <p>{% trans "Building scalable and maintainable software using modern C++ andsystem-level programming techniques. I focus on clean architecture,debugging, performance optimization, and creating applications thatare both efficient and easy to extend." %}</p>
+                    <a href="#contact" class="service-tag">{% trans "Explore" %}</a>
                 </div>
             </div>
             
             <div class="asymmetric-grid fade-in">
                 <div class="service-large">
-                    <h3>Graphics Programming</h3>
-                    <p>Developing rendering systems and graphics pipelines using APIs such asDirectX, OpenGL, and Vulkan. My work includes shaders, GPU programming,real-time rendering, and low-level graphics optimization for interactiveapplications and game engines.</p>
-                    <a href="#contact" class="service-tag">Discover</a>
+                    <h3>{% trans "Graphics Programming" %}</h3>
+                    <p>{% trans "Developing rendering systems and graphics pipelines using APIs such asDirectX, OpenGL, and Vulkan. My work includes shaders, GPU programming,real-time rendering, and low-level graphics optimization for interactiveapplications and game engines." %}</p>
+                    <a href="#contact" class="service-tag">{% trans "Discover" %}</a>
                 </div>
                 <div class="service-small">
                     <div class="service-number">03</div>
-                    <h4>Performance Focused</h4>
+                    <h4>{% trans "Performance Focused" %}</h4>
                 </div>
             </div>
         </div>
@@ -222,38 +223,38 @@
         <div class="container">
             <div class="contact-grid fade-in">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
+                    <h2>{% trans "Get In Touch" %}</h2>
                     <div class="info-item">
-                        <h4>Email</h4>
+                        <h4>{% trans "Email" %}</h4>
                         <p>ariyan.amiri003@gmail.com</p>
                     </div>
                     <div class="info-item">
-                        <h4>Phone</h4>
+                        <h4>{% trans "Phone" %}</h4>
                         <p>+39 328 395 5513</p>
                     </div>
                     <div class="info-item">
-                        <h4>Location</h4>
-                        <p>Salita Padre Umile 17 Genova, Italy</p>
+                        <h4>{% trans "Location" %}</h4>
+                        <p>Somewhere</p>
                     </div>
                 </div>
-                
+
                 <div class="contact-divider"></div>
                 
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder=" " required>
-                            <label>Name</label>
+                            <input type="text" placeholder="Name" required>
+                            <label>{% trans "Name" %}</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder=" " required>
-                            <label>Email</label>
+                            <input type="email" placeholder="Email" required>
+                            <label>{% trans "Email" %}</label>
                         </div>
                         <div class="form-group">
-                            <textarea rows="4" placeholder=" " required></textarea>
-                            <label>Message</label>
+                            <textarea rows="4" placeholder="Message" required></textarea>
+                            <label>{% trans "Message" %}</label>
                         </div>
-                        <button type="submit" class="submit-btn">Send</button>
+                        <button type="submit" class="submit-btn">{% trans "Send" %}</button>
                     </form>
                 </div>
             </div>

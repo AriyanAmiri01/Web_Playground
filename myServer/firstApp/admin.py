@@ -67,11 +67,23 @@ class ProjectAdmin(admin.ModelAdmin):
     # Better many-to-many selection UI
     filter_horizontal = ("tags",)
 
+    # Read-only computed fields
+    readonly_fields = ("likes_count",)
+
+    # Function for like counts
+    def likes_count(self, obj):
+       #  @brief Returns total number of likes.
+        return obj.likes.count()
+    likes_count.short_description = "Likes"
+
+
+
 
 @admin.register(ProjectLike)
 class ProjectLikeAdmin(admin.ModelAdmin):
-    # @brief Custom admin configuration for ProjectLike model.
-
+    """
+    @brief Custom admin configuration for ProjectLike model.
+    """
 
     list_display = (
         "project",

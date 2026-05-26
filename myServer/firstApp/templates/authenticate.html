@@ -1,8 +1,9 @@
-{%extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    Authentication
+    {% trans "Authentication" %}
 {% endblock %}
 
 {% block customStyles %}
@@ -10,10 +11,11 @@
 {% endblock %}
 
 {% block customScript %}
+    {% comment %}{% endcomment %}
 {% endblock %}
 
 {% block mainContent %}
-     <!-- Section 4: Message box-->
+     <!-- Section 1: Message box-->
     {% if messages %}
         {% for message in messages %}
             <div class="alert">
@@ -22,7 +24,7 @@
         {% endfor %}
     {% endif %}
 
-    <!-- Section 4: Login -->
+    <!-- Section 2: Login -->
     <section id="contact" class="login-section">
         <div class="floating-objects">
             <div class="floating-circle"></div>
@@ -33,43 +35,43 @@
         <div class="login-form">
             <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-                <h2>Login</h2>
+                <h2>{% trans "Login" %}</h2>
                 <div class="form-group">
-                    <input type="text" name="username" placeholder="" required>
-                    <label>Username</label>
+                    <input type="text" name="username" placeholder=" " required>
+                    <label>{% trans "Username" %}</label>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" placeholder="" required>
-                    <label>Password</label>
+                    <input type="password" name="password" placeholder=" " required>
+                    <label>{% trans "Password" %}</label>
                 </div>
-                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn">{% trans "Login" %}</button>
             </form>
         </div>
         <div class="login-form">
             <form method="POST" action="{% url 'signup' %}">
                 {% csrf_token %}
-                <h2>Sign Up</h2>
+                <h2>{% trans "Sign Up" %}</h2>
                 <div class="form-group">
                     <input type="text" name="firstName" placeholder=" " required>
-                    <label>FirstName</label>
+                    <label>{% trans "FirstName" %}</label>
                 </div>
                 <div class="form-group">
                     <input type="text" name="lastName" placeholder=" " required>
-                    <label>LastName</label>
+                    <label>{% trans "LastName" %}</label>
                 </div>
                 <div class="form-group">
                     <input type="text" name="username" placeholder=" " required>
-                    <label>Username</label>
+                    <label>{% trans "Username" %}</label>
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" placeholder=" " required>
-                    <label>Email</label>
+                    <label>{% trans "Email" %}</label>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" placeholder=" " required>
-                    <label>Password</label>
+                    <label>{% trans "Password" %}</label>
                 </div>
-                <button type="submit" class="submit-btn">SignUp</button>
+                <button type="submit" class="submit-btn">{% trans "SignUp" %}</button>
             </form>
         </div>
     </section>

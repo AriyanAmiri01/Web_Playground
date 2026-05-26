@@ -1,16 +1,47 @@
-<!-- admin_dashboard.html -->
-<h1>Client Dashboard</h1>
+{%extends "base.html" %}
+{% load static %}
+{% load group_tags %}
+{% load i18n %}
 
+{% block title %}
+    {% trans "TODO" %}Admin Dash
+{% endblock %}
 
-<h1>Current language: {{ language }}</h1>
-<form method="post" action="{% url 'set_language_preference' %}">
-    {% csrf_token %}
+{% block customStyles %}
+    <link href="{% static 'css/style-admin-dashboard.css' %}" rel="stylesheet">
+{% endblock %}
 
-    <select name="language">
-        <option value="en">English</option>
-        <option value="it">Italian</option>
-        <option value="fa">Persian</option>
-    </select>
+{% block customScript %}
+    <script src="{% static 'js/projects-editor.js' %}"></script>
+    <script src="{% static 'js/dashboard-script.js' %}"></script>
+{% endblock %}
 
-    <button type="submit">Save</button>
-</form>
+{% block mainContent %}
+    <section class="frame-section">
+        <!-- Section 1: Side Bar-->
+        <aside class="sidebar">
+            <h2>DASHBOARD</h2>
+            <button id="personalInfoBtnID">Cookie Manager</button>
+        </aside>
+
+        <!-- Section 2 : Dashboard content -->
+        <main class="frame-content">
+            {% csrf_token %}
+            <!-- Window 1: Cookie Management -->
+            <div class="window" id="personalInfoWinID">
+                <h1>Current language: {{ language }}</h1>
+                <form method="post" action="{% url 'set_language_preference' %}">
+                    {% csrf_token %}
+                
+                    <select name="language">
+                        <option value="en">English</option>
+                        <option value="it">Italian</option>
+                        <option value="fa">Persian</option>
+                    </select>
+                
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </main>
+    </section>
+{% endblock %}

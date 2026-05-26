@@ -14,9 +14,10 @@ the projects to the normal users
 
 {%extends "base.html"%}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    My Projects
+        {% trans "My Projects" %}
 {% endblock %}
 
 {% block customStyles %}
@@ -44,9 +45,9 @@ the projects to the normal users
                     <select id="category-filter">
                         <option value="" class="s">All Categories</option>
                         <option value="Graphics">Graphics</option>
-                        <option value="Computations">Compilers</option>
-                        <option value="Software Development">Game Engine</option>
-                        <option value="Embedded System">Game Engine</option>
+                        <option value="Computations">Computations</option>
+                        <option value="Software Development">Software Development</option>
+                        <option value="Embedded System">Embedded System</option>
                     </select>
                     <select id="sort-filter">
                         <option value="newest">Newest</option>

@@ -3,31 +3,27 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
-
-
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
 <head>
+    <!-- Section 1: Page Description -->
     <meta charset="UTF-8">
-    <title>{% block title %}Default Page Title{% endblock %}</title>
+    <title>{% block title %}{% trans "Base Template" %}{% endblock %}</title>
     <meta name="description" content="Index Page">
     <meta name="author" content="Ariyan Amiri">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Section 2: External Dependencies -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{% static 'assets/myLogo.png' %}">
     {% block customStyles %}{% endblock %}
     <script src="{% static 'js/script.js' %}" defer></script>
     {% block customScript %}{% endblock %}
 </head>
-
 <body>
     <!-- Section 1: Navigation Bar -->
     <nav id="navbar" class="nav-bar">
         <div class="nav-container">
-            <a href="{% url 'index' %}" class="logo">ARIYAN AMIRI</a>
+            <a href="{% url 'index' %}" class="logo">{% trans "ARIYAN AMIRI" %}</a>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -35,59 +31,46 @@
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="{% url 'index' %}" class="nav-link">{% trans "HOME" %}</a></li>
-                <li><a href="{% url 'projects' %}" class="nav-link">PROJECTS</a></li>
-                <li><a href="{% url 'about' %}" class="nav-link">ABOUT</a></li>
-                <li><a href="{% url 'contact' %}" class="nav-link">CONTACT</a></li>
-
-
-
-
-
-                <li class="user-link">    {% if user.is_authenticated %}
-                    {% if user|has_group:"admin" %}
-                            
-                        <a href="{% url 'admin-dashboard' %}" class="nav-icon">
-                    {% elif user|has_group:"client" %}
-                        
-                        <a href="{% url 'client-dashboard' %}" class="nav-icon">
-                    {% else %}
-                        
-                        <a href="{% url 'user-dashboard' %}" class="nav-icon">
-                    {% endif %}
+                <li><a href="{% url 'projects' %}" class="nav-link">{% trans "PROJECTS" %}</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">{% trans "CONTACT" %}</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link">{% trans "ABOUT" %}</a></li>
+                <li class="user-link">
+                    {% if user.is_authenticated %}
+                        {% if user|has_group:"admin" %}
+                            <a href="{% url 'admin-dashboard' %}" class="nav-icon">
+                        {% elif user|has_group:"client" %}
+                            <a href="{% url 'client-dashboard' %}" class="nav-icon">
+                        {% else %}
+                            <a href="{% url 'user-dashboard' %}" class="nav-icon">
+                        {% endif %}
                             <img src="{% static 'assets/icon.svg' %}" alt="Profile">
-                        
                             <p>{{ user.username }}</p>
                         </a>
-                    <form method="post" action="{% url 'logout' %}">
-                    
-                        {% csrf_token %}
-                        <button type="submit" class="logout-icon">
-                            <img src="{% static 'assets/icon2.svg' %}" alt="Logout">
-                        </button>
-                    </form>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-icon">
+                                <img src="{% static 'assets/icon2.svg' %}" alt="Logout">
+                            </button>
+                        </form>
                     {% else %}
-                    
                         <a href="{% url 'login' %}" class="nav-icon">
-                        
                             <img src="{% static 'assets/icon.svg' %}" alt="Login">
                         </a>
                     {% endif %}
-                    
                 </li>
-    
-
             </ul>
         </div>
     </nav>
 
+    <!-- Section 2: MAIN [ToBeFilled] -->
     <main>
     {% block mainContent %}
     {% endblock %}
     </main>
 
+    <!-- Section 3: FOOTER -->
     <footer class="footer-section">
-        <p>© 2026 Ariyan Amiri. All rights reserved</p>
+        <p>{% trans "© 2026 Ariyan Amiri. All rights reserved" %}</p>
     </footer>
 </body>
-
 </html>

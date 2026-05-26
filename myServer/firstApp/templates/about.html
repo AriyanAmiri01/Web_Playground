@@ -1,92 +1,110 @@
 {%extends "base.html" %}
 {% load static %}
+{% load group_tags %}
+{% load i18n %}
 
 {% block title %}
-    About Me
+    {% trans "About Me" %}
 {% endblock %}
 
 {% block customStyles %}
-  <link href="{% static 'css/style-about.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style-about.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block customScript %}
+    {% comment "" %} NOTING HERE {% endcomment %}
 {% endblock %}
 
 {% block mainContent %}
         <!-- Section 1: Hero -->
-    <section class="hero2 fade-in">
-        <div class="hero-content">
-            <h1>MY IDENTITY</h1>
-            <p class="subtitle">Low Level Programmer</p>
-        </div>
-    </section>
+         <section>
+            <div class="hero-content hero2">
+                <h1>{% trans "About Me" %}</h1>
+                <p class="subtitle">{% trans "Low Level Programmer" %}</p>
+            </div>
+        </section>
 
     <!-- Section 2: About -->
     <section class="about-section fade-in">
         <div class="container">
-            <!-- Experience Stats Section -->
+            <!-- Experience Stats Sub Section -->
             <div class="stats-grid-section fade-in">
                 <div class="stat-item">
-                    <div class="stat-number">0%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">{% trans "Client Satisfaction" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">5+</div>
-                    <div class="stat-label">Personal Projects</div>
+                    <div class="stat-label">{% trans "Personal Projects" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">{% trans "Years Experience" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">∞</div>
-                    <div class="stat-label">Passion</div>
+                    <div class="stat-label">{% trans "Passion" %}</div>
                     <div class="stat-decoration"></div>
                 </div>
             </div>
 
-            <!-- Skills Section -->
+            <!-- Skills Sub Section -->
             <div class="skills">
                 <div class="head">
-                    <h2> My skills </h2>
+                    <h2>{% trans "My skills" %}</h2>
                 </div>
                 <div class="body">
-
                     <div class="skill">
-                        <p>C++:</p>
+                        <p>C++</p>
                         <div class="stars">
-                            <div class="star-black"></div><div class="star-black"></div><div class="star-white"></div><div class="star-white"></div><div class="star-white"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
                         </div>
                     </div>
-
                     <div class="skill">
-                        <p>C++:</p>
+                        <p>{% trans "Low-Level" %}:</p>
                         <div class="stars">
-                            <div class="star-black"></div><div class="star-black"></div><div class="star-white"></div><div class="star-white"></div><div class="star-white"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-white"></div>
+                            <div class="star-white"></div>
                         </div>
                     </div>
-
                     <div class="skill">
-                        <p>C++:</p>
+                        <p>{% trans "Vulkan" %}</p>
                         <div class="stars">
-                            <div class="star-black"></div><div class="star-black"></div><div class="star-white"></div><div class="star-white"></div><div class="star-white"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-white"></div>
                         </div>
                     </div>
-
                     <div class="skill">
-                        <p>C++:</p>
+                        <p>{% trans "Win32" %}</p>
                         <div class="stars">
-                            <div class="star-black"></div><div class="star-black"></div><div class="star-white"></div><div class="star-white"></div><div class="star-white"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-black"></div>
+                            <div class="star-white"></div>
+                            <div class="star-white"></div>
                         </div>
                     </div>
-
                     <div class="skill">
-                        <p>C++:</p>
+                        <p>{% trans "Django" %}</p>
                         <div class="stars">
-                            <div class="star-black"></div><div class="star-black"></div><div class="star-white"></div><div class="star-white"></div><div class="star-white"></div>
+                            <div class="star-black"></div>
+                            <div class="star-white"></div>
+                            <div class="star-white"></div>
+                            <div class="star-white"></div>
+                            <div class="star-white"></div>
                         </div>
                     </div>
 
@@ -103,38 +121,38 @@
         <div class="container">
             <div class="contact-grid fade-in">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
+                    <h2>{% trans "Get In Touch" %}</h2>
                     <div class="info-item">
-                        <h4>Email</h4>
+                        <h4>{% trans "Email" %}</h4>
                         <p>ariyan.amiri003@gmail.com</p>
                     </div>
                     <div class="info-item">
-                        <h4>Phone</h4>
+                        <h4>{% trans "Phone" %}</h4>
                         <p>+39 328 395 5513</p>
                     </div>
                     <div class="info-item">
-                        <h4>Location</h4>
-                        <p>Salita Padre Umile 17 Genova, Italy</p>
+                        <h4>{% trans "Location" %}</h4>
+                        <p>Somewhere</p>
                     </div>
                 </div>
-                
+
                 <div class="contact-divider"></div>
                 
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder=" " required>
-                            <label>Name</label>
+                            <input type="text" placeholder="Name" required>
+                            <label>{% trans "Name" %}</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder=" " required>
-                            <label>Email</label>
+                            <input type="email" placeholder="Email" required>
+                            <label>{% trans "Email" %}</label>
                         </div>
                         <div class="form-group">
-                            <textarea rows="4" placeholder=" " required></textarea>
-                            <label>Message</label>
+                            <textarea rows="4" placeholder="Message" required></textarea>
+                            <label>{% trans "Message" %}</label>
                         </div>
-                        <button type="submit" class="submit-btn">Send</button>
+                        <button type="submit" class="submit-btn">{% trans "Send" %}</button>
                     </form>
                 </div>
             </div>

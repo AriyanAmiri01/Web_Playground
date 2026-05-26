@@ -1,8 +1,10 @@
 {%extends "base.html" %}
 {% load static %}
+{% load group_tags %}
+{% load i18n %}
 
 {% block title %}
-    Admin Dash
+    {% trans "TODO" %}Admin Dash
 {% endblock %}
 
 {% block customStyles %}
@@ -16,93 +18,91 @@
 
 {% block mainContent %}
     <section class="frame-section">
-
-
+        <!-- Section 1: Side Bar-->
         <aside class="sidebar">
             <h2>DASHBOARD</h2>
-            <button id="personalInfoBtnID">Personal Info</button>
+            <button id="personalInfoBtnID">Cookie Manager</button>
             <button id="projectsBtnID">Projects</button>
-            <button >Nothing more for now</button>
-            <button >Maybe Later</button>
         </aside>
 
-
+        <!-- Section 2 : Dashboard content -->
         <main class="frame-content">
             {% csrf_token %}
-
+            <!-- Window 1: Cookie Management -->
             <div class="window" id="personalInfoWinID">
-                <p>I did not have enouth time to make this part complete</p>
+                <h1>Current language: {{ language }}</h1>
+                <form method="post" action="{% url 'set_language_preference' %}">
+                    {% csrf_token %}
+                
+                    <select name="language">
+                        <option value="en">English</option>
+                        <option value="it">Italian</option>
+                        <option value="fa">Persian</option>
+                    </select>
+                
+                    <button type="submit">Save</button>
+                </form>
             </div>
 
-               
-            <!--Catalog Section -->
+            <!-- Window 2: projects Management-->
             <div class="window" id="projectsWinID"> 
                 <div class="catalog-section" id="portfolioLayout">
-                <!-- Section.1 Left Panel (right is not developed yet) -->
-                <aside class="left-panel">
-                    <!-- Catalog Head-->
-                    <header class="catalog-head">
-                        <h2>Projects</h2>
-                        <input id="search-bar" type="search" class="search-bar" placeholder="Search projects..."/>
-                        <div class="control-row">
-                        
-                            <select>
-                                <option class="s">All Categories</option>
-                                <option>Graphics</option>
-                                <option>Compilers</option>
-                                <option>Game Engine</option>
-                            </select>
-                        
-                            <select>
-                                <option>Newest</option>
-                                <option>Oldest</option>
-                                <option>A-Z</option>
-                            </select>
-                        
-                            <button class="filter-btn">Filter</button>
-                        </div>
-                    </header>
-                
-                    <!-- Catalog Body-->
-                    <div class="catalog-body fade-in">
-                        <div class="item" id="item1">
-
-                            <div class="item-title">TITLE</div>
-                            <div class ="item-desc">  Delivering scalable and high-performance digital experiences throughmodern architecture, seamless integration..</div>
-                            <div class="item-tags">#Innovation #Excellence #Reliability #Performance #Scalability #Security#Optimization #Collaboration #Efficiency #Automation #Integration</div>
-                            <div class="remove-container">
-                                <p>Remove Card</p>
-                                <input type="checkbox" id="selectBtn1" class="select-btn">
+                    <!-- Section.1 Left Panel -->
+                    <aside class="left-panel">
+                        <!-- Catalog Head-->
+                        <header class="catalog-head">
+                            <h2>Projects</h2>
+                            <input id="search-bar" type="search" class="search-bar" placeholder="Search projects..."/>
+                            <div class="control-row">
+                                <select>
+                                    <option class="s">All Categories</option>
+                                    <option>Graphics</option>
+                                    <option>Compilers</option>
+                                    <option>Game Engine</option>
+                                </select>
+                                <select>
+                                    <option>Newest</option>
+                                    <option>Oldest</option>
+                                    <option>A-Z</option>
+                                </select>
+                                <button class="filter-btn">Filter</button>
+                            </div>
+                        </header>
+                    
+                        <!-- Catalog Body-->
+                        <div class="catalog-body fade-in">
+                            <div class="item" id="item1">
+                                <div class="item-title">TITLE</div>
+                                <div class ="item-desc">  Delivering scalable and high-performance digital experiences throughmodern architecture, seamless integration..</div>
+                                <div class="item-tags">#Innovation #Excellence #Reliability #Performance #Scalability #Security#Optimization #Collaboration #Efficiency #Automation #Integration</div>
+                                <div class="remove-container">
+                                    <p>Remove Card</p>
+                                    <input type="checkbox" id="selectBtn1" class="select-btn">
+                                </div>
+                            </div>
+                            <div class="item add-new-item" id="addNewBtn">
+                                <div class="item-title">Add New</div>
+                                <div class="add-new-desc">+</div>
                             </div>
                         </div>
-                        <div class="item add-new-item" id="addNewBtn">
-                            <div class="item-title">Add New</div>
-                            <div class="add-new-desc">+</div>
-                        </div>
-                    </div>
-
-                    <footer class="catalog-foot">
-                        <button type="button" id="save-change-button" class="button-1">
-                            Save Changes
-                        </button>
-                        <button type="button" id="discard-change-button" class="button-1">
-                            Discard Changes
-                        </button>
-                    </footer>
+                        <!-- Catalog Foot-->
+                        <footer class="catalog-foot">
+                            <button type="button" id="save-change-button" class="button-1">
+                                Save Changes
+                            </button>
+                            <button type="button" id="discard-change-button" class="button-1">
+                                Discard Changes
+                            </button>
+                        </footer>
                 
-                </aside>
+                    </aside>
+                </div>
             
                 <!-- A Break Line -->
                 <div class="black-line"></div>
-            
-                <!-- Right panel not developed yet -->
-                </div>
             </div>
             
-
-
-
-            <!-- New Item Section -->
+            <!-- Window3: Pop up winodw  -->
             <div class="add-section" id="modalOverlay">
                 <div class="modal-box">
                     <h2>Create New Project</h2>
@@ -156,7 +156,5 @@
                 </div>
             </div>
         </main>
-
-
     </section>
 {% endblock %}

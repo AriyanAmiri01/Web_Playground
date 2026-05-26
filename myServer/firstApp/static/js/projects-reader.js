@@ -112,8 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
         !data.pagination.has_next;
 
 
-        // Also adding the addNewItem for the Admin only
-        const addNew = document.createElement("div");
 
         // Add the new html element to the catalogBody
         catalogBody.appendChild(addNew);

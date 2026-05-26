@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalOverlay = document.getElementById("modalOverlay");
     const createBtn = document.getElementById("createBtn");
     const cancelBtn = document.getElementById("cancelBtn");
+    let currentPage = 1;
 
     // Finds the CSRF token of the HTML page for the post request
     function getCSRFToken() {
@@ -16,7 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Loads the projects
     async function loadProjects() {
         // Send a fetch request to the server for getting the projects
-        const response = await fetch("/api/projects/");
+        const params = new URLSearchParams();
+        params.append("page", currentPage);
+
+        const response = await fetch(`/api/projects/?${params.toString()}`);
 
         // Check if it is OK
         if (!response.ok) {
@@ -63,20 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-
             // Append it to the catalog body
             catalogBody.appendChild(item);
         });
 
-    // Also adding the addNewItem for the Admin only
-    const addNew = document.createElement("div");
-    addNew.className = "item add-new-item";
-    addNew.id = "addNewBtn";
-    addNew.innerHTML = `
-        <div class="item-title">Add New</div>
-        <div class="add-new-desc">+</div>
-    `;
-    catalogBody.appendChild(addNew);
+        // Also adding the addNewItem for the Admin only
+        const addNew = document.createElement("div");
+        addNew.className = "item add-new-item";
+        addNew.id = "addNewBtn";
+        addNew.innerHTML = `
+            <div class="item-title">Add New</div>
+            <div class="add-new-desc">+</div>
+        `;
+        
+        // Pagination buttons state
+        document.querySelector("#prev-btn").disabled =
+        !data.pagination.has_previous;
+        document.querySelector("#next-btn").disabled =
+        !data.pagination.has_next;
+
+        catalogBody.appendChild(addNew);
     }
 
     //This function loops through all items and if it is selected it sends a delete request 
@@ -231,6 +241,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Discard Changes
     discardButton.addEventListener("click", discardChanges);
+
+    document.querySelector("#prev-btn").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        loadProjects();
+    }
+});
+
+document.querySelector("#next-btn").addEventListener("click", () => {
+    currentPage++;
+    loadProjects();
+});
 
     loadProjects();
 });

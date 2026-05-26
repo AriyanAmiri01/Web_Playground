@@ -194,7 +194,7 @@ border-left: 10px black solid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding: 2px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     gap: 20px;
     /* Visual Effects */
     

@@ -84,7 +84,7 @@ TEMPLATES = [
 
 
 # Enabling language translation
-LANGUAGE_CODE = "it"
+LANGUAGE_CODE = "en"
 
 USE_I18N = True
 

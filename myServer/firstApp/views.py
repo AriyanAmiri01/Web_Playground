@@ -25,6 +25,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.conf import settings
+from django.shortcuts import redirect
+from django.utils import translation
+from django.conf import settings
 
 # My Model Stuff
 from .models import Project, Tag, ProjectLike
@@ -403,24 +407,23 @@ def toggle_project_like(request, project_id):
 # Session and Cookie Management
 # -------------------------------------------------------------------------
 def set_language_preference(request):
-    # Extract the language from the http request
     language = request.POST.get("language", "en")
 
-    # Add the language with its key to the session
-    request.session["language"] = language
+    if language not in dict(settings.LANGUAGES):
+        language = "en"
 
-    # Redirect user to the same page that it was before
+    translation.activate(language)
+
+    #request.session[translation.LANGUAGE_SESSION_KEY] = language
+    request.session["django_language"] = language
     response = redirect(request.META.get("HTTP_REFERER", "/"))
-
-    # Set user cookie for one year
     response.set_cookie(
-        "language",
+        settings.LANGUAGE_COOKIE_NAME,
         language,
-        max_age=60 * 60 * 24 * 365,  # 1 year
+        max_age=60 * 60 * 24 * 365,
         samesite="Lax",
     )
 
-    # return the response
     return response
 
 def my_view(request):

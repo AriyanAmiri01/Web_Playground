@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-26 16:39+0200\n"
+"POT-Creation-Date: 2026-05-26 16:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,270 +16,269 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\firstApp\templates\about.html:7 .\firstApp\templates\about.html:22
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"#: .\firstApp\templates\about.html:7 .\firstApp\templates\about.html:22
 msgid "About Me"
-msgstr "Chi sono"
+msgstr "درباره من"
 
 #: .\firstApp\templates\about.html:23 .\firstApp\templates\index.html:28
 msgid "Low Level Programmer"
-msgstr "Programmatore Low-Level"
+msgstr "برنامه‌نویس سطح پایین"
 
 #: .\firstApp\templates\about.html:34 .\firstApp\templates\index.html:57
 msgid "Client Satisfaction"
-msgstr "Soddisfazione del cliente"
+msgstr "رضایت مشتری"
 
 #: .\firstApp\templates\about.html:39 .\firstApp\templates\index.html:62
 msgid "Personal Projects"
-msgstr "Progetti personali"
+msgstr "پروژه‌های شخصی"
 
 #: .\firstApp\templates\about.html:44 .\firstApp\templates\index.html:67
 msgid "Years Experience"
-msgstr "Anni di esperienza"
+msgstr "سال‌ها تجربه"
 
 #: .\firstApp\templates\about.html:49 .\firstApp\templates\index.html:72
 msgid "Passion"
-msgstr "Passione"
+msgstr "اشتیاق"
 
 #: .\firstApp\templates\about.html:57
 msgid "My skills"
-msgstr "Le mie competenze"
+msgstr "مهارت‌های من"
 
 #: .\firstApp\templates\about.html:71
 msgid "Low-Level"
-msgstr "Low-Level"
+msgstr "سطح پایین"
 
 #: .\firstApp\templates\about.html:81
 msgid "Vulkan"
-msgstr "Vulkan"
+msgstr "ولکان"
 
 #: .\firstApp\templates\about.html:91
 msgid "Win32"
-msgstr "Win32"
+msgstr "وین۳۲"
 
 #: .\firstApp\templates\about.html:101
 msgid "Django"
-msgstr "Django"
+msgstr "جنگو"
 
 #: .\firstApp\templates\about.html:124 .\firstApp\templates\contact.html:23
 #: .\firstApp\templates\index.html:226
 msgid "Get In Touch"
-msgstr "Contattami"
+msgstr "در تماس باشید"
 
 #: .\firstApp\templates\about.html:126 .\firstApp\templates\about.html:149
 #: .\firstApp\templates\authenticate.html:68
 #: .\firstApp\templates\contact.html:25 .\firstApp\templates\contact.html:48
 #: .\firstApp\templates\index.html:228 .\firstApp\templates\index.html:251
 msgid "Email"
-msgstr "Email"
+msgstr "ایمیل"
 
 #: .\firstApp\templates\about.html:130 .\firstApp\templates\contact.html:29
 #: .\firstApp\templates\index.html:232
 msgid "Phone"
-msgstr "Telefono"
+msgstr "تلفن"
 
 #: .\firstApp\templates\about.html:134 .\firstApp\templates\contact.html:33
 #: .\firstApp\templates\index.html:236
 msgid "Location"
-msgstr "Posizione"
+msgstr "موقعیت"
 
 #: .\firstApp\templates\about.html:145 .\firstApp\templates\contact.html:44
 #: .\firstApp\templates\index.html:247
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
 #: .\firstApp\templates\about.html:153 .\firstApp\templates\contact.html:52
 #: .\firstApp\templates\index.html:255
 msgid "Message"
-msgstr "Messaggio"
+msgstr "پیام"
 
 #: .\firstApp\templates\about.html:155 .\firstApp\templates\contact.html:54
 #: .\firstApp\templates\index.html:257
 msgid "Send"
-msgstr "Invia"
+msgstr "ارسال"
 
 #: .\firstApp\templates\admin-dashboard.html:7
 #: .\firstApp\templates\client-dashboard.html:7
 #: .\firstApp\templates\user-dashboard.html:7
 msgid "TODO"
-msgstr "DA FARE"
+msgstr "انجام شود"
 
 #: .\firstApp\templates\authenticate.html:6
 msgid "Authentication"
-msgstr "Autenticazione"
+msgstr "احراز هویت"
 
 #: .\firstApp\templates\authenticate.html:38
 #: .\firstApp\templates\authenticate.html:47
 msgid "Login"
-msgstr "Accesso"
+msgstr "ورود"
 
 #: .\firstApp\templates\authenticate.html:41
 #: .\firstApp\templates\authenticate.html:64
 msgid "Username"
-msgstr "Nome utente"
+msgstr "نام کاربری"
 
 #: .\firstApp\templates\authenticate.html:45
 #: .\firstApp\templates\authenticate.html:72
 msgid "Password"
-msgstr "Password"
+msgstr "رمز عبور"
 
 #: .\firstApp\templates\authenticate.html:53
 msgid "Sign Up"
-msgstr "Registrati"
+msgstr "ثبت نام"
 
 #: .\firstApp\templates\authenticate.html:56
 msgid "FirstName"
-msgstr "Nome"
+msgstr "نام"
 
 #: .\firstApp\templates\authenticate.html:60
 msgid "LastName"
-msgstr "Cognome"
+msgstr "نام خانوادگی"
 
 #: .\firstApp\templates\authenticate.html:74
 msgid "SignUp"
-msgstr "Registrazione"
+msgstr "ثبت نام"
 
 #: .\firstApp\templates\base.html:10
 msgid "Base Template"
-msgstr "Template Base"
+msgstr "قالب پایه"
 
 #: .\firstApp\templates\base.html:26
 msgid "ARIYAN AMIRI"
-msgstr "ARIYAN AMIRI"
+msgstr "آریان امیری"
 
 #: .\firstApp\templates\base.html:33
 msgid "HOME"
-msgstr "HOME"
+msgstr "خانه"
 
 #: .\firstApp\templates\base.html:34
 msgid "PROJECTS"
-msgstr "PROGETTI"
+msgstr "پروژه‌ها"
 
 #: .\firstApp\templates\base.html:35
 msgid "CONTACT"
-msgstr "CONTATTI"
+msgstr "تماس"
 
 #: .\firstApp\templates\base.html:36
 msgid "ABOUT"
-msgstr "CHI SONO"
+msgstr "درباره"
 
 #: .\firstApp\templates\base.html:73
 msgid "© 2026 Ariyan Amiri. All rights reserved"
-msgstr "© 2026 Ariyan Amiri. Tutti i diritti riservati"
+msgstr "© ۲۰۲۶ آریان امیری. تمامی حقوق محفوظ است."
 
 #: .\firstApp\templates\contact.html:7
 msgid "Contact Me"
-msgstr "Contattami"
+msgstr "تماس با من"
 
 #: .\firstApp\templates\index.html:6
 msgid "Index Page"
-msgstr "Pagina principale"
+msgstr "صفحه اصلی"
 
 #: .\firstApp\templates\index.html:27
 msgid "WHO AM I?"
-msgstr "CHI SONO?"
+msgstr "من کی هستم؟"
 
 #: .\firstApp\templates\index.html:29
 msgid "EXPLORE"
-msgstr "ESPLORA"
+msgstr "کاوش"
 
 #: .\firstApp\templates\index.html:40
 msgid ""
 "Trust is the lubrication that makes it possible for organizations to work."
 msgstr ""
-"La fiducia è il lubrificante che rende possibile il funzionamento delle organizzazioni."
+"اعتماد همان روان‌کننده‌ای است که کار کردن سازمان‌ها را ممکن می‌سازد."
 
 #: .\firstApp\templates\index.html:81
 msgid "Philosophy"
-msgstr "Filosofia"
+msgstr "فلسفه"
 
 #: .\firstApp\templates\index.html:86
 msgid ""
 "Great systems are never built alone — they are shaped through trust, "
 "discipline, and people moving toward the same vision."
 msgstr ""
-"I grandi sistemi non vengono mai costruiti da soli: prendono forma grazie alla fiducia, "
-"alla disciplina e a persone che condividono la stessa visione."
+"سیستم‌های بزرگ هرگز به تنهایی ساخته نمی‌شوند — آن‌ها از طریق اعتماد، "
+"انضباط و افرادی که به سوی یک هدف مشترک حرکت می‌کنند شکل می‌گیرند."
 
 #: .\firstApp\templates\index.html:91
 msgid "Clarity"
-msgstr "Chiarezza"
+msgstr "شفافیت"
 
 #: .\firstApp\templates\index.html:92
 msgid "Writing understandable code and communicating ideas precisely."
-msgstr "Scrivere codice comprensibile e comunicare idee con precisione."
+msgstr "نوشتن کد قابل فهم و انتقال دقیق ایده‌ها."
 
 #: .\firstApp\templates\index.html:96 .\firstApp\templates\index.html:164
 msgid "Reliability"
-msgstr "Affidabilità"
+msgstr "قابلیت اعتماد"
 
 #: .\firstApp\templates\index.html:97
 msgid "Delivering consistent work others can depend on."
-msgstr "Fornire un lavoro costante su cui gli altri possano fare affidamento."
+msgstr "ارائه کار پایدار و قابل اتکا برای دیگران."
 
 #: .\firstApp\templates\index.html:101
 msgid "Collaboration"
-msgstr "Collaborazione"
+msgstr "همکاری"
 
 #: .\firstApp\templates\index.html:102
 msgid "Building strong results through communication, trust, and teamwork."
-msgstr "Costruire risultati solidi attraverso comunicazione, fiducia e lavoro di squadra."
+msgstr "ساخت نتایج قوی از طریق ارتباط، اعتماد و کار تیمی."
 
 #: .\firstApp\templates\index.html:117
 msgid "Connection"
-msgstr "Connessione"
+msgstr "ارتباط"
 
 #: .\firstApp\templates\index.html:118
 msgid "Establish shared vision and values."
-msgstr "Stabilire una visione e valori condivisi."
+msgstr "ایجاد چشم‌انداز و ارزش‌های مشترک."
 
 #: .\firstApp\templates\index.html:124
 msgid "Understanding"
-msgstr "Comprensione"
+msgstr "درک"
 
 #: .\firstApp\templates\index.html:125
 msgid "Recognize strengths and potential."
-msgstr "Riconoscere punti di forza e potenziale."
+msgstr "شناخت نقاط قوت و پتانسیل."
 
 #: .\firstApp\templates\index.html:131
 msgid "Commitment"
-msgstr "Impegno"
+msgstr "تعهد"
 
 #: .\firstApp\templates\index.html:132
 msgid "Build reliability and mutual trust."
-msgstr "Costruire affidabilità e fiducia reciproca."
+msgstr "ایجاد اعتماد و اطمینان متقابل."
 
 #: .\firstApp\templates\index.html:138
 msgid "Creation"
-msgstr "Creazione"
+msgstr "خلق"
 
 #: .\firstApp\templates\index.html:139
 msgid "Achieve meaningful work together."
-msgstr "Realizzare insieme un lavoro significativo."
+msgstr "دستیابی به کار ارزشمند به صورت مشترک."
 
 #: .\firstApp\templates\index.html:150
 msgid "Core Values"
-msgstr "Valori fondamentali"
+msgstr "ارزش‌های اصلی"
 
 #: .\firstApp\templates\index.html:156
 msgid "Semplicity"
-msgstr "Semplicità"
+msgstr "سادگی"
 
 #: .\firstApp\templates\index.html:160
 msgid "Efficiency"
-msgstr "Efficienza"
+msgstr "بهره‌وری"
 
 #: .\firstApp\templates\index.html:169
 msgid "Scalability"
-msgstr "Scalabilità"
+msgstr "مقیاس‌پذیری"
 
 #: .\firstApp\templates\index.html:180
 msgid "What Do I Do"
-msgstr "Cosa faccio"
+msgstr "چه کاری انجام می‌دهم"
 
 #: .\firstApp\templates\index.html:185
 msgid "Embedded System"
-msgstr "Sistemi Embedded"
+msgstr "سیستم‌های نهفته"
 
 #: .\firstApp\templates\index.html:186
 msgid ""
@@ -288,26 +287,26 @@ msgid ""
 "efficient and reliable solutions with a strong focus on performance,memory "
 "management, and hardware integration."
 msgstr ""
-"Progetto sistemi low-level che comunicano direttamente con l'hardware. "
-"Dai microcontrollori e driver di dispositivo fino alle applicazioni real-time, "
-"sviluppo soluzioni efficienti e affidabili con una forte attenzione a prestazioni, "
-"gestione della memoria e integrazione hardware."
+"طراحی سیستم‌های سطح پایینی که مستقیماً با سخت‌افزار ارتباط برقرار می‌کنند. "
+"از میکروکنترلرها و درایورهای دستگاه گرفته تا برنامه‌های بلادرنگ، "
+"راهکارهایی کارآمد و قابل اعتماد با تمرکز بر عملکرد، مدیریت حافظه "
+"و یکپارچگی با سخت‌افزار ایجاد می‌کنم."
 
 #: .\firstApp\templates\index.html:187
 msgid "View Work"
-msgstr "Visualizza lavori"
+msgstr "مشاهده کارها"
 
 #: .\firstApp\templates\index.html:191
 msgid "Low Level Vission"
-msgstr "Visione Low-Level"
+msgstr "دیدگاه سطح پایین"
 
 #: .\firstApp\templates\index.html:198
 msgid "System Driven"
-msgstr "Orientato ai sistemi"
+msgstr "سیستم محور"
 
 #: .\firstApp\templates\index.html:201
 msgid "Software Development"
-msgstr "Sviluppo Software"
+msgstr "توسعه نرم‌افزار"
 
 #: .\firstApp\templates\index.html:202
 msgid ""
@@ -316,18 +315,17 @@ msgid ""
 "optimization, and creating applications thatare both efficient and easy to "
 "extend."
 msgstr ""
-"Sviluppo software scalabile e manutenibile utilizzando C++ moderno e tecniche "
-"di programmazione a livello di sistema. Mi concentro su architetture pulite, "
-"debugging, ottimizzazione delle prestazioni e creazione di applicazioni "
-"efficienti e facili da estendere."
+"ساخت نرم‌افزارهای مقیاس‌پذیر و قابل نگهداری با استفاده از ++C مدرن و "
+"تکنیک‌های برنامه‌نویسی سطح سیستم. تمرکز من بر معماری تمیز، اشکال‌زدایی، "
+"بهینه‌سازی عملکرد و ایجاد برنامه‌هایی است که هم کارآمد و هم قابل توسعه باشند."
 
 #: .\firstApp\templates\index.html:203
 msgid "Explore"
-msgstr "Esplora"
+msgstr "کاوش"
 
 #: .\firstApp\templates\index.html:209
 msgid "Graphics Programming"
-msgstr "Programmazione Grafica"
+msgstr "برنامه‌نویسی گرافیک"
 
 #: .\firstApp\templates\index.html:210
 msgid ""
@@ -336,19 +334,19 @@ msgid ""
 "programming,real-time rendering, and low-level graphics optimization for "
 "interactiveapplications and game engines."
 msgstr ""
-"Sviluppo sistemi di rendering e pipeline grafiche utilizzando API come "
-"DirectX, OpenGL e Vulkan. Il mio lavoro include shader, programmazione GPU, "
-"rendering in tempo reale e ottimizzazione grafica low-level per applicazioni "
-"interattive e motori di gioco."
+"توسعه سیستم‌های رندرینگ و پایپ‌لاین‌های گرافیکی با استفاده از APIهایی مانند "
+"DirectX، OpenGL و Vulkan. کار من شامل شیدرها، برنامه‌نویسی GPU، "
+"رندرینگ بلادرنگ و بهینه‌سازی سطح پایین گرافیک برای برنامه‌های تعاملی "
+"و موتورهای بازی است."
 
 #: .\firstApp\templates\index.html:211
 msgid "Discover"
-msgstr "Scopri"
+msgstr "کشف"
 
 #: .\firstApp\templates\index.html:215
 msgid "Performance Focused"
-msgstr "Orientato alle prestazioni"
+msgstr "متمرکز بر عملکرد"
 
 #: .\firstApp\templates\projects.html:20
 msgid "My Projects"
-msgstr "I miei progetti"
+msgstr "پروژه‌های من"

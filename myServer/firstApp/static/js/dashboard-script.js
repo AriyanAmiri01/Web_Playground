@@ -22,5 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
         personalInfoBtn.classList.remove("active");
         projectsBtn.classList.add("active");
     });
-
 });

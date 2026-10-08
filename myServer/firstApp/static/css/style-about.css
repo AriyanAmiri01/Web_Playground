@@ -2,7 +2,6 @@
 *   HERO SECTION
 *********************************************************/
 .hero2 {
-    /* Responsiveness */
     display: flex;
     min-height: 100vh;
     align-items: center;
@@ -10,13 +9,13 @@
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
-    /* Animations */
     background-image: url(../assets/myPhoto1.png);
     background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+    background-position: center;
+    background-size: cover;
 
 }
+
 .hero2::before {
     /* The line before .hero Section */
     /* Responsiveness */
@@ -31,6 +30,7 @@
     /* Animations */
     animation: slideRight 8s ease-in-out infinite;
 }
+
 .hero2::after {
     /* The line before .hero Section */
     /* Responsiveness */
@@ -45,6 +45,7 @@
     /* Texts */
     animation: slideLeft 8s ease-in-out infinite;
 }
+
 .hero2-content {
     /* Responsiveness */
     position: relative;
@@ -55,6 +56,7 @@
     /* Animations */
     animation: fadeInUp 1s ease;
 }
+
 .hero2 h1 {
     /* Responsiveness */
     margin-bottom: 30px;
@@ -66,6 +68,7 @@
     font-weight: 100;
     letter-spacing: -3px;
 }
+
 .hero2 h1::after {
     /* Responsiveness */
     content: '';
@@ -79,6 +82,7 @@
     /* Animations */
     transform: translateX(-50%);
 }
+
 .hero2 .subtitle {
     /* Responsiveness */
     margin-bottom: 50px;
@@ -95,7 +99,7 @@
 /*********************************************************
 *   ABOUT SECTION
 *********************************************************/
-.about-section{
+.about-section {
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -115,6 +119,7 @@
     /* Visual Effects */
     background: #000;
 }
+
 .stats-grid-section .stat-item {
     /* Responsiveness */
     padding: 60px 20px;
@@ -124,6 +129,7 @@
     /* Texts */
     text-align: center;
 }
+
 .stats-grid-section .stat-number {
     /* Responsiveness */
     margin-bottom: 10px;
@@ -132,6 +138,7 @@
     font-weight: 100;
     letter-spacing: -2px;
 }
+
 .stats-grid-section .stat-label {
     /* Texts */
     font-size: 12px;
@@ -139,6 +146,7 @@
     text-transform: uppercase;
     font-weight: 500;
 }
+
 .stats-grid-section .stat-decoration {
     /* Responsiveness */
     position: absolute;
@@ -157,16 +165,19 @@
 /*********************************************************
 *   SKILLS SECTION
 *********************************************************/
-.skills{
+.skills {
     background-color: rgb(237, 237, 237);
     padding: 10px;
-    padding-bottom: 50px;;
+    padding-bottom: 50px;
+    ;
 
 }
-.skills .head{
+
+.skills .head {
     display: flex;
     justify-content: center;
 }
+
 .skills .head {
     /* Responsiveness */
     position: relative;
@@ -174,6 +185,7 @@
     /* Texts */
     text-align: center;
 }
+
 .skills .head::after {
     /* Responsiveness */
     content: '';
@@ -187,6 +199,7 @@
     /* Animations */
     transform: translateX(-50%);
 }
+
 .skills .head h2 {
     /* Responsiveness */
     position: relative;
@@ -197,6 +210,7 @@
     font-weight: 100;
     letter-spacing: -1px;
 }
+
 .skills .head h2::before {
     /* Responsiveness */
     content: '';
@@ -210,6 +224,7 @@
     /* Animations */
     transform: translateY(-50%);
 }
+
 .skills .head h2::after {
     /* Responsiveness */
     content: '';
@@ -223,15 +238,17 @@
     /* Animations */
     transform: translateY(-50%);
 }
-.skills .body{
+
+.skills .body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     column-gap: 80px;
+    column-gap: 80px;
     row-gap: 20px;
     padding: 2px;
 
 }
-.skills .skill{
+
+.skills .skill {
     position: relative;
     overflow: hidden;
     display: grid;
@@ -243,10 +260,12 @@
     padding: 5px;
     transition: transform 0.2s ease;
 }
-.skills .skill:hover{
+
+.skills .skill:hover {
     transform: scale(1.06);
 }
-.skills .skill::before{
+
+.skills .skill::before {
     content: '';
     position: absolute;
     top: 0;
@@ -257,14 +276,17 @@
     background: rgba(0, 0, 0, 0.03);
     transition: left 0.6s ease;
 }
-.skills .skill:hover::before{
+
+.skills .skill:hover::before {
     left: 0;
 }
-.skill p{
+
+.skill p {
     font-size: 24px;
     position: relative;
     bottom: 3px;
 }
+
 .skill p {
     /* Responsiveness */
     display: inline-block;
@@ -278,6 +300,7 @@
     font-weight: 300;
     letter-spacing: -1px;
 }
+
 .skill p::after {
     /* Responsiveness */
     content: '';
@@ -291,18 +314,21 @@
     /* Animations */
     transition: width 0.3s ease;
 }
+
 .skills .skill:hover p::after {
     /* Responsiveness */
     width: 100%;
 }
-.stars{
+
+.stars {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
     align-items: center;
     gap: 29px;
 }
-.star-black{
+
+.star-black {
     width: 15px;
     height: 15px;
     border: 1px black solid;
@@ -310,7 +336,8 @@
     transform: rotate(45deg);
 
 }
-.star-white{
+
+.star-white {
     width: 15px;
     height: 15px;
     border: 1px black solid;

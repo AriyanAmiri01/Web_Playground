@@ -1,6 +1,13 @@
-// Main Entry
+/*
+@file projects-editor.js
+@author Ariyan Amiri
+@version 1.0
+@date 2026-05-23
+@see https://github.com/AriyanAmiri01/Web_Playground
+*/
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Get Buttens Instances
+    // Get Instances
     const catalogBody = document.querySelector(".catalog-body");
     const saveButton = document.getElementById("save-change-button");
     const discardButton = document.getElementById("discard-change-button");
@@ -9,50 +16,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelBtn = document.getElementById("cancelBtn");
     let currentPage = 1;
 
-    // Finds the CSRF token of the HTML page for the post request
+    // CSRF Token Getter
     function getCSRFToken() {
         return document.querySelector("[name=csrfmiddlewaretoken]")?.value;
     }
 
-    // Loads the projects
+    // Loads Projects
     async function loadProjects() {
-        // Send a fetch request to the server for getting the projects
+        // Get Projects
         const params = new URLSearchParams();
         params.append("page", currentPage);
-
         const response = await fetch(`/api/projects/?${params.toString()}`);
 
-        // Check if it is OK
+        // Error Check
         if (!response.ok) {
-        const errorHtml = await response.text();
-        console.error("Server returned error:", errorHtml);
-        return;}
+            const errorHtml = await response.text();
+            console.error("Server returned error:", errorHtml);
+            return;
+        }
 
-        // Get the datas from its response
+        // Get JSON
         const data = await response.json();
 
-        // Get catalogBody for rendering newly fetched data
-        const catalogBody = document.querySelector(".catalog-body");
+        // Fill Catalog
         catalogBody.innerHTML = "";
-
-        // Extract raw datas from JSON struct
         data.projects.forEach(project => {
-            // Extract each item
+            // Extract item
             const item = document.createElement("div");
-
-            // Set its HTML properties
             item.className = "item";
             item.dataset.id = project.id;
-
-            const tagsValue = Array.isArray(project.tags)
-                ? project.tags.join(", ")
-                : project.tags ?? "";
-
+            const tagsValue = Array.isArray(project.tags)? project.tags.join(", "): project.tags ?? "";
             item.innerHTML = `
                 <input class="edit-title" value="${project.title ?? ""}">
                 <textarea class="edit-desc">${project.description ?? ""}</textarea>
                 <input class="edit-tags" value="${tagsValue}">
-                
                 <input class="edit-start-date" type="date" value="${project.start_date ?? ""}">
                 <input class="edit-end-date" type="date" value="${project.end_date ?? ""}">
                 <select class="edit-status">
@@ -67,11 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            // Append it to the catalog body
+            // Append To Catalog
             catalogBody.appendChild(item);
         });
 
-        // Also adding the addNewItem for the Admin only
+        // AddNewBtn (Admin Only)
         const addNew = document.createElement("div");
         addNew.className = "item add-new-item";
         addNew.id = "addNewBtn";
@@ -80,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="add-new-desc">+</div>
         `;
         
-        // Pagination buttons state
+        // Pagination Buttons
         document.querySelector("#prev-btn").disabled =
         !data.pagination.has_previous;
         document.querySelector("#next-btn").disabled =
@@ -89,21 +86,21 @@ document.addEventListener("DOMContentLoaded", () => {
         catalogBody.appendChild(addNew);
     }
 
-    //This function loops through all items and if it is selected it sends a delete request 
+    // Save New Changes
     async function saveChanges() {
-        // Getting all the items
+        // Get Items
         const items = document.querySelectorAll(".catalog-body .item:not(.add-new-item)");
 
-        console.log("save chnages is clicked");
-        // Looping through all items and deleteing the selected ones from server
+        // Update Items
         for (const item of items) {
             // Get the item ID
             const projectId = item.dataset.id;
             if (!projectId) {
-             console.error("Missing project ID on item:", item);
-                continue;}
+                console.error("Missing project ID on item:", item);
+                continue;
+            }
 
-            // Check if it should be deleted
+            // Delete Item Case
             const shouldDelete = item.querySelector(".select-btn").checked;
             if (shouldDelete) {
                 // If Yes sends the delete request
@@ -116,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 continue;
             }
 
-            // First it gets the datas of the new item
+            // Update Item Case
             const title = item.querySelector(".edit-title").value;
             const description = item.querySelector(".edit-desc").value;
             const tags = item.querySelector(".edit-tags").value;
@@ -124,9 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const start_date = item.querySelector(".edit-start-date").value;
             const end_date = item.querySelector(".edit-end-date").value;
             const status = item.querySelector(".edit-status").value;
-
-            // Create the JSON structure
-                    // Create JSON structure
             const projectData = {
                 title: title,
                 description: description,
@@ -136,10 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 github_link: github_link,
                 end_date: end_date
             };
-            console.log(projectData);
-
-            // Then sends them to the server for updating them using JSON
             const response = await fetch(`/api/projects/${projectId}/update/`, {
+                // Update Add Request
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -148,27 +140,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(projectData)
             });
 
+            // Error Check
             if (!response.ok) {
                 const text = await response.text();
                 console.error("Update failed:");
                 console.error(text);
                 return;
             }
-
         }
 
-        // At the end it reload all the projects(items)
+        // Reload
         await loadProjects();
     }
 
-    // Discard changes
+    // Discard Changes
     async function discardChanges(){
         await loadProjects();
     }
 
     // Function to create a new project
     async function createProject() {
-        // First it gets the datas of the new item
+        // Get Datas
         const title = document.getElementById("projectTitle").value;
         const description = document.getElementById("projectDesc").value;
         const tags = document.getElementById("projectTags").value;
@@ -177,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const github_link = document.getElementById("projectGithub").value;
         const end_date = document.getElementById("projectEndDate").value;
 
-        // Create JSON structure
+        // Create JSON
         const projectData = {
             title: title,
             description: description,
@@ -187,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
             github_link: github_link,
             end_date: end_date
         };
-        console.log(projectData);
 
         // Send request
         const response = await fetch("/api/projects/create/", {
@@ -201,58 +192,44 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(projectData)
         });
 
-        // Check server response
+        // Handle Server Response
         if(response.ok){
-
-            console.log("Project created successfully");
-
+            // Hide Overlay Window
             document.getElementById("modalOverlay").style.display = "none";
 
+            // Reload
             await loadProjects();
         }
         else{
-
+            // Error message
             const errorText = await response.text();
-
             console.error("Server Error:");
             console.error(errorText);
         }
     }
 
-    // When addNewBtn is pressed
+    // Event Listeners
     catalogBody.addEventListener("click", event => {
         const addNewBtn = event.target.closest("#addNewBtn");
-
         if (addNewBtn) {
             modalOverlay.classList.add("active");
         }
     });
-
-    // Cancel Adding New element process
-    cancelBtn.addEventListener("click", () => {
-        modalOverlay.classList.remove("active");
+    cancelBtn.addEventListener("click", () => {modalOverlay.classList.remove("active");});
+    createBtn.addEventListener("click", createProject);
+    saveButton.addEventListener("click", saveChanges);
+    discardButton.addEventListener("click", discardChanges);
+    document.querySelector("#prev-btn").addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            loadProjects();
+        }
+    });
+    document.querySelector("#next-btn").addEventListener("click", () => {
+        currentPage++;
+        loadProjects();
     });
 
-    // Proceed with Adding New element process
-    createBtn.addEventListener("click", createProject);
-
-    // Save changes 
-    saveButton.addEventListener("click", saveChanges);
-
-    // Discard Changes
-    discardButton.addEventListener("click", discardChanges);
-
-    document.querySelector("#prev-btn").addEventListener("click", () => {
-    if (currentPage > 1) {
-        currentPage--;
-        loadProjects();
-    }
-});
-
-document.querySelector("#next-btn").addEventListener("click", () => {
-    currentPage++;
-    loadProjects();
-});
-
+    // Reload
     loadProjects();
 });

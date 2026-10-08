@@ -23,82 +23,26 @@ from .models import Tag, Project, ProjectLike
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    # @brief 
-    # Project customization
 
-    # Columns displayed in admin list view
+    # 
     list_display = ("name", "description")
-    search_fields = ("name",)
 
+    # Search Box
+    search_fields = ("name", "description")
 
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
-    # @brief 
-    # Project customization
+    # Default sorting
+    ordering = ("name",)
 
-    # Columns displayed in admin list view
-    list_display = (
-        "title",
-        "category",
-        "status",
-        "start_date",
-        "end_date",
-        "likes_count",
-    )
+    # Filter
+    list_filter = ("name",)
 
-    # Right-side filtering panel
-    list_filter = (
-        "status",
-        "category",
-        "start_date",
-        "tags",
-    )
+    # Azioni personalizzate
+    actions = ("clear_description",)
 
-    # Search bar fields
-    search_fields = (
-        "title",
-        "description",
-        "github_link",
-    )
-
-    # Default ordering
-    ordering = ("-start_date",)
-
-    # Better many-to-many selection UI
-    filter_horizontal = ("tags",)
-
-    # Read-only computed fields
-    readonly_fields = ("likes_count",)
-
-    # Function for like counts
-    def likes_count(self, obj):
-       #  @brief Returns total number of likes.
-        return obj.likes.count()
-    likes_count.short_description = "Likes"
-
-
-
-
-@admin.register(ProjectLike)
-class ProjectLikeAdmin(admin.ModelAdmin):
-    """
-    @brief Custom admin configuration for ProjectLike model.
-    """
-
-    list_display = (
-        "project",
-        "user",
-        "created_at",
-    )
-
-    list_filter = (
-        "created_at",
-        "project",
-    )
-
-    search_fields = (
-        "project__title",
-        "user__username",
-    )
-
-    readonly_fields = ("created_at",)
+    @admin.action(description="Svuota la descrizione dei tag selezionati")
+    def clear_description(self, request, queryset):
+        updated = queryset.update(description="")
+        self.message_user(
+            request,
+            f"{updated} descrizione/i dei tag sono state svuotate."
+        )

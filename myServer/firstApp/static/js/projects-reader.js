@@ -1,22 +1,14 @@
 /*
-@file projects-reader.js
-@brief Loads, filters, renders, and updates project cards on the projects page.
-
-@details
-Fetches project data from the Django backend, renders project cards inside the
-catalog container, and handles project like requests using CSRF protection.
-
+@file views.py
 @author Ariyan Amiri
 @version 1.0
-@date 2026-05-22
+@date 2026-05-23
 @see https://github.com/AriyanAmiri01/Web_Playground
 */
 
-
-
 // Main Entry
 document.addEventListener("DOMContentLoaded", () => {
-    // Finds the CSRF token of the HTML page for the post request
+    // Get Token
     function getCSRFToken() {
         return document.querySelector("[name=csrfmiddlewaretoken]")?.value;
     }
@@ -26,12 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Loads the projects
     async function loadProjects() {
-        // Get the searching stuffs
+        // Get Instances
         const search = document.querySelector("#search-bar").value;
         const category = document.querySelector("#category-filter").value;
         const sort = document.querySelector("#sort-filter").value;
+        const catalogBody = document.querySelector(".catalog-body");
 
-        // Get Searching Params to be passed to the django server
+        // Get Searching Params
         const params = new URLSearchParams();
         if(currentPage) params.append("page", currentPage);
         if (search) params.append("search", search);
@@ -39,39 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
         if (sort) params.append("sort", sort);
 
 
-        // Send a fetch request to the server for getting the projects
+        // Get Projects Request
         const response = await fetch(`/api/projects/?${params.toString()}`);
-        //const response = await fetch("/api/projects/");
 
-        // Check if it is OK
+        // Error Check
         if (!response.ok) {
             const errorHtml = await response.text();
             console.error("Server returned error:", errorHtml);
             return;
         }
 
-        // Get the datas from its response
+        // Extract Json
         const data = await response.json();
 
 
 
-        // Get catalogBody for rendering newly fetched data
-        const catalogBody = document.querySelector(".catalog-body");
+        // Add Catalog Elements
         catalogBody.innerHTML = "";
-
-        // Extract raw datas from JSON struct
         data.projects.forEach(project => {
-            // Extract each item
+            // Prapare Item
             const item = document.createElement("div");
-
-            // Set its HTML properties
             item.className = "item";
             item.dataset.id = project.id;
-
-            // Separating tags
             const tagsValue = Array.isArray(project.tags) ? project.tags.join(", "): project.tags ?? "";
-
-            // Get liked class based on what user did in pased
             const likedClass = project.liked_by_user ? "liked" : "";
             item.innerHTML = `
                 <div class="item-title">${project.title ?? ""}</div>  
@@ -88,10 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </button>
             `;
 
-            // Append it to the catalog body
+            // Append Item
             catalogBody.appendChild(item);
 
-            // Add the link event
+            // Like Event
             item.querySelector(".like-btn").addEventListener("click", async () => {
                 const response = await fetch(`/projects/${project.id}/like/`, {
                     method: "POST",
@@ -99,42 +82,36 @@ document.addEventListener("DOMContentLoaded", () => {
                         "X-CSRFToken": getCSRFToken(),
                     },
                 });
-                // Reload the projects if everything gone right
+                // Reload
                 if (response.ok) {
                     loadProjects();
                 }
             });
         });
-        // Pagination buttons state
-        document.querySelector("#prev-btn").disabled =
-        !data.pagination.has_previous;
-        document.querySelector("#next-btn").disabled =
-        !data.pagination.has_next;
 
+        // Pagination Buttons State
+        document.querySelector("#prev-btn").disabled =!data.pagination.has_previous;
+        document.querySelector("#next-btn").disabled =!data.pagination.has_next;
 
-
-        // Add the new html element to the catalogBody
+        // Append to catalog
         catalogBody.appendChild(addNew);
     }
 
-    // Add the event listener for searching stuff
+    // Event Listeners
     document.querySelector("#filter-btn").addEventListener("click", () => {
         currentPage = 1;
         loadProjects();
     });
-
-    // Previous page
     document.querySelector("#prev-btn").addEventListener("click", () => {
             if (currentPage > 1) {
                 currentPage--;
                 loadProjects();
             }
     });
-
-    // Next page
     document.querySelector("#next-btn").addEventListener("click", () => {
         currentPage++;loadProjects();
     });
     
+    // Reload
     loadProjects();
 });
